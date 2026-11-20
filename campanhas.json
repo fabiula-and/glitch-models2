@@ -1,0 +1,7 @@
+{
+ "_como_editar": [
+  "Cada campanha é um bloco. tipo: Campanha, Editorial ou Comercial. modelos: lista de ids dos modelos que aparecem.",
+  "capa e imagens: arquivos na pasta images/. Enquanto a lista estiver vazia, o site mostra 'Em produção'."
+ ],
+ "campanhas": []
+}

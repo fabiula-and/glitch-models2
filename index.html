@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Glitch Models — Estúdio de modelos virtuais</title>
+<meta name="description" content="Glitch Models é um casting digital que explora moda, identidade e inteligência artificial. Um projeto Glitch Studio.">
+<meta name="theme-color" content="#0d0d0c">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%23d9f76f%22/%3E%3Cpath d=%22M45 23.5A17 17 0 1 0 47 36H33%22 fill=%22none%22 stroke=%22%23111%22 stroke-width=%227.5%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0d0c;--fg:#f2f0ea;--mut:#8e8b83;--line:#2b2a26;--panel:#161614;--lime:#d9f76f;
+--d:'Newsreader','Times New Roman',Georgia,serif;--b:'Inter',Helvetica,Arial,sans-serif;color-scheme:dark;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:calc(90px + env(safe-area-inset-top,0px))}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 17px/1.6 var(--b);-webkit-font-smoothing:antialiased}
+body.lock{overflow:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+[hidden]{display:none!important}
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px}
+::selection{background:var(--lime);color:#111}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,4vw,40px);position:relative}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(13,13,12,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
+.logo img{height:36px;width:auto;display:block}
+.ft .logo img{height:42px}
+nav.mid{display:flex;gap:2px;border:1px solid var(--line);border-radius:99px;padding:5px;background:rgba(22,22,20,.7)}
+nav.mid a{font-size:14px;padding:9px 18px;border-radius:99px;transition:background .2s,color .2s}
+nav.mid a:hover{background:var(--lime);color:#111}
+.hr{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--fg);color:#111;font:500 15px var(--b);padding:16px 28px;border-radius:99px;border:1px solid var(--fg);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.btn:hover{background:var(--lime);border-color:var(--lime);color:#111}
+.btn.sm{padding:11px 20px;font-size:14px}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn.ghost:hover{background:var(--lime);border-color:var(--lime);color:#111}
+.btn.lime{background:var(--lime);border-color:var(--lime)}
+.btn.lime:hover{background:var(--fg);border-color:var(--fg)}
+.mbtn{display:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--panel);cursor:pointer;position:relative;padding:0}
+.mbtn span{position:absolute;left:13px;right:13px;height:2px;background:var(--fg);border-radius:2px;transition:transform .25s,top .25s}
+.mbtn span:first-child{top:17px}.mbtn span:last-child{top:24px}
+header.open .mbtn span:first-child{top:20px;transform:rotate(45deg)}header.open .mbtn span:last-child{top:20px;transform:rotate(-45deg)}
+@media(max-width:860px){.mbtn{display:block}.hr .btn{display:none}
+nav.mid{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;gap:0;border-radius:0;border:0;border-bottom:1px solid var(--line);background:var(--bg);padding:6px clamp(20px,4vw,40px) 18px}
+header.open nav.mid{display:flex}nav.mid a{font-size:19px;padding:15px 4px;border-radius:0;border-bottom:1px solid var(--line)}nav.mid a:hover{background:none;color:var(--lime)}nav.mid a:last-child{border-bottom:0}}
+
+/* type */
+h1,h2,h3{font-family:var(--d);font-weight:500;line-height:.98;margin:0;letter-spacing:-.035em}
+h1{font-size:clamp(50px,10vw,136px)}
+h1 em,h2 em{font-style:italic;font-weight:400}
+h2{font-size:clamp(40px,6.4vw,84px)}
+h3{font-size:clamp(28px,3.2vw,40px)}
+.sn{display:block;font:500 12px var(--b);letter-spacing:.18em;color:var(--mut);margin-bottom:18px}
+.sn b{color:var(--lime);font-weight:500}
+
+/* glitch */
+.glitch{position:relative;display:inline-block}
+.glitch::before,.glitch::after{content:attr(data-t);position:absolute;inset:0;pointer-events:none;opacity:0;color:var(--lime);white-space:nowrap}
+.glitch::before{clip-path:inset(0 0 55% 0)}.glitch::after{clip-path:inset(55% 0 0 0)}
+.glitch.go::before{animation:g1 .9s steps(2,end) 1}.glitch.go::after{animation:g2 .9s steps(2,end) 1}
+.glitch:hover::before{opacity:1;transform:translate(-5px,0)}.glitch:hover::after{opacity:1;transform:translate(5px,0)}
+@keyframes g1{0%,100%{opacity:0}20%{opacity:1;transform:translate(-8px,0)}50%{opacity:1;transform:translate(6px,0)}75%{opacity:1;transform:translate(-3px,0)}}
+@keyframes g2{0%,100%{opacity:0}25%{opacity:1;transform:translate(8px,0)}55%{opacity:1;transform:translate(-6px,0)}80%{opacity:1;transform:translate(3px,0)}}
+
+/* hero */
+.hero{padding:clamp(48px,8vw,96px) 0 clamp(56px,7vw,88px);text-align:center;border-bottom:1px solid var(--line)}
+.tag{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:6px 15px;font-size:13px;color:var(--mut);margin-bottom:26px}
+.tag b{color:var(--lime);font-weight:500}
+.hero p{margin:30px auto 32px;max-width:500px;color:var(--mut);font-size:19px}
+.hero p b{color:var(--fg);font-weight:500}
+.cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.badge{position:absolute;top:-6px;right:clamp(0px,1vw,16px);width:108px;height:108px;animation:spin 22s linear infinite}
+.badge text{font:500 9px var(--b);fill:var(--fg)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:64px;align-items:end}
+.strip a{display:block;transition:transform .4s}.strip a:hover{transform:translateY(-6px)}
+.strip a:nth-child(odd) .ph{transform:translateY(-22px)}
+.strip a:nth-child(3) .ph{aspect-ratio:3/4.4}
+@media(max-width:1000px){.badge{display:none}}
+@media(max-width:760px){.strip{grid-template-columns:repeat(3,minmax(0,1fr))}.strip a:nth-child(1),.strip a:nth-child(5){display:none}.strip a:nth-child(odd) .ph{transform:none}}
+
+/* photo frame with fallback */
+.ph{position:relative;overflow:hidden;border-radius:20px;background:var(--panel);aspect-ratio:3/4}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
+.ph.miss{background:repeating-linear-gradient(135deg,#161614 0 14px,#1b1b18 14px 28px);border:1px dashed var(--line)}
+.ph.miss img{display:none}
+.ph.miss::after{content:attr(data-i);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:italic 400 clamp(28px,4vw,48px) var(--d);color:#4a4842}
+
+/* ticker */
+.ticker{overflow:hidden;border-bottom:1px solid var(--line);padding:18px 0;white-space:nowrap}
+.ticker div{display:inline-flex;gap:48px;animation:mq 40s linear infinite;font:italic 400 28px var(--d);letter-spacing:-.02em}
+.ticker span{display:inline-flex;gap:48px}.ticker i{font-style:normal;color:var(--lime)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+section{padding:clamp(64px,9vw,120px) 0;border-bottom:1px solid var(--line)}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 40px;align-items:flex-end;margin-bottom:40px}
+.head p{margin:0;max-width:400px;color:var(--mut)}
+
+/* categories = category filter */
+.cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:14px}
+@media(max-width:900px){.cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.col{background:var(--panel);border:1px solid var(--line);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:28px;cursor:pointer;color:inherit;font:inherit;text-align:left;transition:border-color .2s,background .2s,color .2s}
+.col:hover{border-color:var(--lime)}
+.col.on{background:var(--lime);border-color:var(--lime);color:#111}
+.col i{font:500 12px var(--b);font-style:normal;letter-spacing:.18em;color:var(--mut);display:flex;justify-content:space-between}
+.col b{display:block;font:500 clamp(28px,3vw,38px)/1 var(--d);letter-spacing:-.035em;text-transform:uppercase}
+.col small{display:block;font-size:14px;line-height:1.45;color:var(--mut);margin-top:10px}
+.col.on i,.col.on small{color:#111}
+@media(max-width:560px){.col{padding:18px;gap:18px}.col small{display:none}}
+
+/* filter bar */
+.fbar{position:sticky;top:calc(84px + env(safe-area-inset-top,0px));z-index:6;background:var(--bg);padding:12px 0;margin-bottom:28px;border-bottom:1px solid var(--line)}
+.frow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.srch{position:relative;flex:1 1 280px}
+.srch svg{position:absolute;left:16px;top:50%;width:18px;height:18px;margin-top:-9px;stroke:var(--mut);fill:none;stroke-width:2}
+.fbar input,.fbar select{background:var(--panel);border:1px solid var(--line);color:var(--fg);border-radius:99px;padding:11px 18px;font:400 15px var(--b);width:100%;transition:border-color .2s}
+.srch input{padding-left:44px}
+.fbar input:focus,.fbar select:focus{border-color:var(--lime);outline:0}
+.fbar input::placeholder{color:var(--mut)}
+.fbar select{width:auto;flex:0 0 auto;appearance:none;-webkit-appearance:none;padding-right:40px;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238e8b83' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:16px}
+.cnt{font-size:14px;color:var(--mut);white-space:nowrap}
+.clr{background:none;border:0;color:var(--fg);font:500 14px var(--b);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px}
+.clr:hover{color:var(--lime)}
+.tags{display:flex;gap:8px;margin-top:10px;overflow-x:auto;padding-bottom:2px}
+.tags:empty{display:none}
+.tg{flex:none;border:1px solid var(--line);background:transparent;color:var(--mut);border-radius:99px;padding:6px 14px;font:400 13px var(--b);cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.tg:hover{border-color:var(--lime);color:var(--fg)}
+.tg.on{background:var(--lime);border-color:var(--lime);color:#111}
+@media(max-width:620px){.fbar{position:static}.fbar select{flex:1 1 0}}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 16px}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:620px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 10px}}
+.card{display:block;background:none;border:0;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer;width:100%}
+.card .ph{border-radius:22px}
+.card .ph img{transition:opacity .6s ease,filter .6s ease,transform .8s ease}
+.card .ph img.b{opacity:0}
+.card .ph img.a{filter:grayscale(1)}
+.card:hover .ph img.b,.card.tap .ph img.b{opacity:1}
+.card:hover .ph.solo img.a,.card.tap .ph.solo img.a{filter:none}
+.card:hover .ph img,.card.tap .ph img{transform:scale(1.03)}
+.card .ph::before{content:"Ver perfil ↗";position:absolute;left:12px;bottom:12px;z-index:2;background:var(--lime);color:#111;font:500 13px var(--b);padding:7px 13px;border-radius:99px;opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s}
+.card:hover .ph::before,.card:focus-visible .ph::before{opacity:1;transform:none}
+.num{position:absolute;top:10px;left:10px;right:10px;z-index:2;display:flex;justify-content:space-between;gap:6px;font:500 11px var(--b);letter-spacing:.16em;color:#fff}
+.num span{background:rgba(13,13,12,.62);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);padding:4px 9px 4px 10px;border-radius:99px}
+.card b{display:block;font:500 clamp(21px,2vw,26px)/1.05 var(--d);letter-spacing:-.025em;margin-top:14px}
+.card span.m{display:block;font-size:13px;color:var(--mut);margin-top:5px}
+.tc{display:none}@media(hover:none){.hv{display:none}.tc{display:inline}}
+.more{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:44px}.more span{font-size:13px;color:var(--mut)}.more b{font-weight:500}
+.empty{border:1.5px dashed var(--line);border-radius:28px;padding:clamp(32px,5vw,64px);display:flex;flex-direction:column;align-items:flex-start;gap:14px;grid-column:1/-1}
+.empty b{font:500 clamp(30px,4vw,48px)/1 var(--d);letter-spacing:-.03em}
+.empty p{margin:0;color:var(--mut);max-width:480px}
+
+/* campaigns */
+.camps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media(max-width:900px){.camps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.camps{grid-template-columns:1fr}}
+.cp{display:block;background:none;border:0;padding:0;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.cp .ph{aspect-ratio:4/5;border-radius:24px}
+.cp .ph img{transition:transform .8s}.cp:hover .ph img{transform:scale(1.03)}
+.cp small{display:block;font:500 12px var(--b);letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-top:14px}
+.cp b{display:block;font:500 clamp(24px,2.4vw,30px)/1.05 var(--d);letter-spacing:-.025em;margin-top:6px}
+.cp span{display:block;font-size:14px;color:var(--mut);margin-top:4px}
+
+/* services */
+.dvg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.dvi{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:28px;transition:border-color .2s}
+.dvi:hover{border-color:var(--lime)}
+.dvi i,.st i{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--lime);color:#111;font:500 14px var(--b);font-style:normal;margin-bottom:34px}
+.dvi h4,.st h4{font:500 26px/1.05 var(--d);letter-spacing:-.03em;margin:0 0 10px}
+.dvi p,.st p{margin:0;color:var(--mut);font-size:15px}
+.snote{margin:22px 0 0;font-size:15px;color:var(--mut)}
+.snote a{color:var(--fg);text-decoration:underline;text-underline-offset:3px}.snote a:hover{color:var(--lime)}
+@media(max-width:900px){.dvg{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.dvg{grid-template-columns:1fr}}
+
+/* about */
+.ab{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:32px 48px}
+.ab .lead{font:400 clamp(24px,2.6vw,32px)/1.25 var(--d);letter-spacing:-.02em;margin:0 0 28px}
+.ab .lead b{font-weight:500;color:var(--lime)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.st{background:var(--panel);border:1px solid var(--line);border-radius:28px;padding:26px;transition:border-color .2s}
+.st:hover{border-color:var(--lime)}
+.fr2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.fr2 div{border:1px solid var(--line);border-radius:28px;padding:24px 26px}
+.fr2 small{display:flex;align-items:center;gap:10px;font:500 12px var(--b);letter-spacing:.18em;text-transform:uppercase;color:var(--mut);margin-bottom:10px}
+.fr2 small::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lime)}
+.fr2 p{margin:0;font-size:15px}
+@media(max-width:900px){.ab{grid-template-columns:1fr}.steps{grid-template-columns:1fr}}
+@media(max-width:560px){.fr2{grid-template-columns:1fr}}
+
+/* contact */
+.contact h2{font-size:clamp(50px,9.5vw,136px);margin-bottom:28px}
+.studio{margin-top:12px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:20px 48px;align-items:center;background:var(--lime);color:#111;border-radius:28px;padding:clamp(24px,3.4vw,40px)}
+.studio small{display:block;font:500 12px var(--b);letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px}
+.studio b{display:block;font:500 clamp(34px,4vw,48px)/1 var(--d);letter-spacing:-.035em}
+.studio p{margin:0 0 18px;font-size:16px;color:#111}
+.studio .btn{background:#111;color:#fff;border-color:#111}
+.studio .btn:hover{background:#fff;color:#111;border-color:#fff}
+@media(max-width:820px){.studio{grid-template-columns:1fr}}
+
+footer{padding:36px 0 120px}
+.ft{display:flex;align-items:center;justify-content:space-between;gap:24px 32px}
+.ft a.logo{transition:opacity .2s}.ft a.logo:hover{opacity:.7}
+.igs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.igs a{border:1px solid var(--line);border-radius:99px;padding:8px 16px;font-size:14px;transition:background .2s,border-color .2s,color .2s}
+.igs a:hover{background:var(--lime);border-color:var(--lime);color:#111}
+.copy{margin:36px 0 0;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--mut);text-align:center}
+.copy a{text-decoration:underline;text-underline-offset:3px}
+@media(max-width:900px){.ft{flex-direction:column}}
+
+/* whatsapp */
+.wa{position:fixed;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;align-items:center;background:#25d366;color:#04210f;font-weight:600;font-size:15px;padding:15px;border-radius:99px;box-shadow:0 8px 28px rgba(0,0,0,.45);transition:transform .2s,padding .3s}
+.wa svg{width:26px;height:26px;fill:currentColor;flex:none}
+.wa span{max-width:0;overflow:hidden;white-space:nowrap;opacity:0;transition:max-width .3s,margin .3s,opacity .2s}
+@media(hover:hover) and (min-width:521px){.wa:hover{padding:15px 22px 15px 15px}.wa:hover span{max-width:220px;margin-left:10px;opacity:1}}
+
+/* profile / campaign viewer */
+.pm{position:fixed;inset:0;z-index:60;background:rgba(5,5,5,.9);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);overflow-y:auto;padding:max(20px,env(safe-area-inset-top,0px)) 20px max(20px,env(safe-area-inset-bottom,0px))}
+.pbox{max-width:1120px;margin:0 auto;background:var(--bg);border:1px solid var(--line);border-radius:32px;padding:clamp(18px,3vw,36px);position:relative}
+.px{position:absolute;top:16px;right:16px;z-index:3;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--fg);font-size:16px;cursor:pointer;transition:background .2s,color .2s}
+.px:hover{background:var(--lime);color:#111}
+.ptop{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:28px 44px}
+.pgal .ph.main{aspect-ratio:4/5;border-radius:24px}
+.pinfo{display:flex;flex-direction:column;padding-top:clamp(0px,3vw,36px)}
+.pinfo h3{font-size:clamp(42px,5vw,64px);margin-bottom:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chips span{border:1px solid var(--line);border-radius:99px;padding:5px 14px;font-size:13px;color:var(--mut)}
+.chips span.l{background:var(--lime);border-color:var(--lime);color:#111;font-weight:500}
+.chips span.v{color:var(--fg);border-color:var(--fg)}
+.bio{color:var(--mut);margin:0 0 22px}
+dl{margin:0 0 24px;display:grid;grid-template-columns:auto 1fr}
+dt,dd{margin:0;padding:11px 0;border-top:1px solid var(--line);font-size:15px}
+dt{color:var(--mut);padding-right:24px;display:flex;align-items:center;gap:10px;white-space:nowrap}
+dt::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lime);flex:none}
+dd{text-align:right;font-weight:500}
+dl dt:nth-last-child(2),dl dd:last-child{border-bottom:1px solid var(--line)}
+.ptags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 24px}
+.ptags span{font-size:13px;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:99px;padding:5px 12px}
+.pact{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.pnav{display:flex;gap:8px;margin-top:12px}.pnav button{flex:1}
+.pfine{font-size:13px;color:var(--mut);margin:14px 0 0}
+.pblk{margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
+.pblk h4{font:500 clamp(28px,3vw,38px)/1 var(--d);letter-spacing:-.03em;margin:0 0 20px}
+.ptabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.pgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.pgrid figure{margin:0;min-width:0;cursor:zoom-in}
+.pgrid figcaption{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-top:8px}
+.apl{display:flex;flex-wrap:wrap;gap:8px}
+.apl span{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:99px;padding:9px 16px;font-size:14px}
+.apl span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lime)}
+@media(max-width:860px){.ptop{grid-template-columns:1fr}.pinfo{padding-top:0}.pgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.94);display:flex;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+.lb img{max-width:100%;max-height:100%;border-radius:16px;object-fit:contain}
+
+@media(prefers-reduced-motion:reduce){.ticker div,.badge,.glitch::before,.glitch::after{animation:none!important}html{scroll-behavior:auto}.card .ph img{transition:none}}
+</style>
+</head>
+<body>
+
+<header id="hdr"><div class="wrap">
+<a class="logo" href="#topo" aria-label="Glitch Models, início"><img src="images/logo-glitch-models.png" alt="Glitch Models" width="565" height="227"></a>
+<nav class="mid" id="mnav"><a href="#casting">Casting</a><a href="#campanhas">Campanhas</a><a href="#sobre">Sobre</a><a href="#servicos">Serviços</a></nav>
+<div class="hr"><a class="btn sm lime" href="https://glitchstudio.ia.br/" target="_blank" rel="noopener">Glitch Studio ↗</a><button class="mbtn" id="mbtn" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span></button></div>
+</div></header>
+
+<main id="topo">
+<!-- 01 · INÍCIO -->
+<div class="hero"><div class="wrap">
+<svg class="badge" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="c" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><text><textPath href="#c" textLength="270" lengthAdjust="spacing">CASTING DIGITAL ✦ MODA · IDENTIDADE · IA ✦</textPath></text><path d="M60 47 63 57 73 60 63 63 60 73 57 63 47 60 57 57Z" fill="#d9f76f"/></svg>
+<span class="tag"><b>●</b> Estúdio de modelos virtuais · <span id="total">34</span> perfis</span>
+<h1><span class="glitch" data-t="Novos rostos">Novos rostos</span><br><em><span class="glitch" data-t="para a sua marca.">para a sua marca.</span></em></h1>
+<p><b>Glitch Models é um casting digital</b> que explora moda, identidade e inteligência artificial.</p>
+<div class="cta"><a class="btn lime" href="#casting">Ver casting →</a><a class="btn ghost" href="#servicos">Possibilidades de aplicação</a></div>
+<div class="strip" id="strip"></div>
+</div></div>
+
+<div class="ticker" aria-hidden="true"><div>
+<span>Neo Muse<i>✦</i>Neural<i>✦</i>Offmodel<i>✦</i>Raw<i>✦</i>Casting digital<i>✦</i>Campanhas<i>✦</i>Editoriais<i>✦</i></span>
+<span>Neo Muse<i>✦</i>Neural<i>✦</i>Offmodel<i>✦</i>Raw<i>✦</i>Casting digital<i>✦</i>Campanhas<i>✦</i>Editoriais<i>✦</i></span>
+</div></div>
+
+<!-- 02 · CASTING -->
+<section id="casting"><div class="wrap">
+<div class="head"><div><span class="sn"><b>02</b> · CATÁLOGO</span><h2>Casting</h2></div><p>Talentos virtuais com identidade própria, características reconhecíveis e portfólio individual. <span class="hv">Passe o mouse para ver outra pose e clique para abrir o perfil.</span><span class="tc">Role para ver outra pose e toque para abrir o perfil.</span></p></div>
+<div class="cols" id="cols" role="group" aria-label="Categorias"></div>
+<div class="fbar">
+<div class="frow">
+<label class="srch"><span class="sr" hidden>Buscar</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Buscar por nome ou característica" autocomplete="off" aria-label="Buscar por nome ou característica"></label>
+<select id="age" aria-label="Idade visual"><option value="">Idade visual · todas</option><option value="18-24">18 a 24 anos</option><option value="25-34">25 a 34 anos</option><option value="35-44">35 a 44 anos</option><option value="45-120">45 anos ou mais</option></select>
+<span class="cnt" id="cnt"></span><button type="button" class="clr" id="clr" hidden>Limpar filtros</button>
+</div>
+<div class="tags" id="tags" role="group" aria-label="Características"></div>
+</div>
+<div class="grid" id="grid"></div>
+<div class="more" id="more" hidden><button type="button" class="btn ghost" id="moreb"><b></b></button><span></span></div>
+</div></section>
+
+<!-- 04 · CAMPANHAS -->
+<section id="campanhas"><div class="wrap">
+<div class="head"><div><span class="sn"><b>04</b> · PRODUÇÕES</span><h2>Campanhas</h2></div><p>Campanhas, editoriais e produções comerciais realizadas com os talentos do Glitch Models.</p></div>
+<div id="camps"></div>
+</div></section>
+
+<!-- 05 · SOBRE -->
+<section id="sobre"><div class="wrap ab">
+<div><span class="sn"><b>05</b> · O PROJETO</span><h2>Sobre</h2></div>
+<div>
+<p class="lead"><b>Glitch Models</b> é um casting digital que explora moda, identidade e inteligência artificial. Rostos consistentes, prontos para vestir a sua marca.</p>
+<div class="steps">
+<div class="st"><i>01</i><h4>Escolha o modelo</h4><p>Navegue pelo casting e salve os perfis que combinam com a sua marca.</p></div>
+<div class="st"><i>02</i><h4>Envie as peças</h4><p>Mande fotos das roupas, referências e o objetivo do conteúdo.</p></div>
+<div class="st"><i>03</i><h4>Receba o conteúdo</h4><p>Imagens e vídeos com o modelo escolhido, prontos para usar.</p></div>
+</div>
+<div class="fr2">
+<div><small>Comercial</small><p>Modelos para marcas, campanhas, catálogos, e-commerce e publicidade.</p></div>
+<div><small>Experimental</small><p>Personagens digitais, editoriais autorais, identidades visuais e experimentações estéticas.</p></div>
+</div>
+</div>
+</div></section>
+
+<!-- 06 · SERVIÇOS -->
+<section id="servicos"><div class="wrap">
+<div class="head"><div><span class="sn"><b>06</b> · APLICAÇÕES</span><h2>Serviços</h2></div><p>O que pode ser desenvolvido com os modelos virtuais do Glitch Models.</p></div>
+<div class="dvg">
+<div class="dvi"><i>01</i><h4>Conteúdo para redes sociais</h4><p>Imagens e materiais visuais para publicações, lançamentos e comunicação de marcas.</p></div>
+<div class="dvi"><i>02</i><h4>Catálogos virtuais</h4><p>Apresentação de coleções, peças, looks e detalhes de produtos.</p></div>
+<div class="dvi"><i>03</i><h4>Campanhas de moda</h4><p>Conceitos visuais e campanhas com modelos digitais.</p></div>
+<div class="dvi"><i>04</i><h4>Vídeos</h4><p>Produções audiovisuais e conteúdos em movimento para marcas e coleções.</p></div>
+<div class="dvi"><i>05</i><h4>Casting digital</h4><p>Seleção e desenvolvimento de modelos virtuais alinhados à identidade de cada marca.</p></div>
+<div class="dvi"><i>06</i><h4>Lookbooks</h4><p>Apresentação visual de coleções, combinações e propostas de looks.</p></div>
+</div>
+<p class="snote">Atendimento, orçamento e execução são feitos pelo <a href="https://glitchstudio.ia.br/" target="_blank" rel="noopener">Glitch Studio ↗</a></p>
+</div></section>
+
+<section id="contato" class="contact"><div class="wrap">
+<h2><span class="glitch" data-t="Vamos criar">Vamos criar</span><br><em>juntos?</em></h2>
+<div class="studio">
+<div><small>Um projeto Glitch Studio</small><b>Da escolha do rosto ao conteúdo pronto.</b></div>
+<div><p>Os modelos da Glitch Models ganham vida nos projetos da Glitch Studio: catálogos, lookbooks, campanhas e vídeos com IA para marcas de moda.</p>
+<a class="btn" href="https://glitchstudio.ia.br/" target="_blank" rel="noopener">Conheça a Glitch Studio ↗</a></div>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+<div class="ft">
+<a class="logo" href="#topo" aria-label="Glitch Models, voltar ao topo"><img src="images/logo-glitch-models.png" alt="Glitch Models" width="565" height="227" loading="lazy"></a>
+<nav class="igs"><a href="#casting">Casting</a><a href="#campanhas">Campanhas</a><a href="https://www.instagram.com/glitch.studio.ai/" target="_blank" rel="noopener">@glitch.studio.ai</a><a href="https://wa.me/5511972030164" target="_blank" rel="noopener">WhatsApp</a></nav>
+<a class="logo" href="https://glitchstudio.ia.br/" target="_blank" rel="noopener" aria-label="Glitch Studio, abre o site em nova aba"><img src="images/logo-glitch-studio.png" alt="Glitch Studio" width="569" height="228" loading="lazy"></a>
+</div>
+<p class="copy">© 2026 Glitch Models® · Um projeto <a href="https://glitchstudio.ia.br/" target="_blank" rel="noopener">Glitch Studio</a> · Todos os modelos são virtuais.</p>
+</div></footer>
+
+<a class="wa" href="https://wa.me/5511972030164" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3M12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.2C2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8M20.5 3.5C18.2 1.2 15.2 0 12 0 5.4 0 .1 5.3.1 11.9c0 2.1.5 4.1 1.6 5.9L0 24l6.3-1.7c1.7.9 3.7 1.4 5.7 1.4 6.6 0 11.9-5.3 11.9-11.9 0-3.2-1.2-6.2-3.4-8.3"/></svg><span>Fale com a gente</span></a>
+
+<div class="pm" id="pm" hidden role="dialog" aria-modal="true" aria-labelledby="pname"></div>
+<div class="lb" id="lb" hidden><img alt=""></div>
+
+<script>
+(async function(){
+const WA='5511972030164';
+const TIPOS={retrato:'Retratos',corpo:'Corpo inteiro',poses:'Poses e expressões',editorial:'Editoriais',comercial:'Produções comerciais'};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm=s=>String(s||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+const ini=n=>n.split(' ').map(w=>w[0]).slice(0,2).join('');
+const first=n=>n.split(' ')[0];
+
+async function load(f,fb){try{const r=await fetch(f,{cache:'no-cache'});if(!r.ok)throw 0;return await r.json()}catch(e){return fb}}
+const D=await load('modelos.json',{categorias:[],modelos:[]});
+const CP=(await load('campanhas.json',{campanhas:[]})).campanhas||[];
+const C=D.categorias||[],M=D.modelos||[];
+const cat=id=>C.find(c=>c.id===id);
+
+/* photo frame: a = main image, b = optional second image layered on top */
+function ph(m,a,o={}){
+  const b=o.b?`<img class="b" src="images/${esc(o.b)}" alt="" ${o.eager?'':'loading="lazy"'} onerror="this.remove();this.parentNode&&this.parentNode.classList.add('solo')">`:'';
+  return `<div class="ph ${o.cls||''}${o.b?'':' solo'}" data-i="${esc(ini(m.nome))}">${o.top||''}<img class="a" src="images/${esc(a)}" alt="${esc(o.alt||m.nome+', modelo virtual Glitch Models')}" ${o.eager?'':'loading="lazy"'} onerror="this.parentNode.classList.add('miss')">${b}</div>`;
+}
+
+$('#total').textContent=M.length;
+/* hero: fixed models always appear (first one in the centre), the rest are drawn at random on every visit */
+function hero(){
+  const H=D.hero||{},n=H.total||5;
+  const fix=(H.fixos||[]).map(id=>M.find(m=>m.id===id)).filter(Boolean).slice(0,n);
+  const pool=M.filter(m=>!fix.includes(m)&&m.fotos&&m.fotos.capa);
+  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}
+  const pick=pool.slice(0,n-fix.length),mid=Math.floor(n/2),out=[];
+  if(fix[0])out[mid]=fix[0];
+  const rest=fix.slice(1).concat(pick);
+  for(let i=0;i<n;i++)if(!out[i])out[i]=rest.shift();
+  $('#strip').innerHTML=out.filter(Boolean).map(m=>`<a href="#${esc(m.id)}" aria-label="${esc(m.nome)}, ver perfil">${ph(m,m.fotos.capa,{eager:true})}</a>`).join('');
+}
+hero();
+addEventListener('pageshow',e=>{if(e.persisted)hero()});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&pm.hidden)hero()});
+
+/* ---- filters ---- */
+const st={cat:'',q:'',age:'',tags:new Set()};
+const PER=D.porPagina||20;let shown=PER;
+function catCards(){
+  $('#cols').innerHTML=C.map((c,i)=>{const n=M.filter(m=>m.categoria===c.id).length;
+    return `<button type="button" class="col${st.cat===c.id?' on':''}" data-c="${c.id}" aria-pressed="${st.cat===c.id}"><i><span>0${i+1}</span><span>${n?n+(n===1?' perfil':' perfis'):'em breve'}</span></i><div><b>${esc(c.nome)}</b><small>${esc(c.conceito)}</small></div></button>`}).join('');
+}
+function tagChips(){
+  const all=[...new Set(M.flatMap(m=>m.tags||[]))].sort((a,b)=>a.localeCompare(b,'pt'));
+  $('#tags').innerHTML=all.map(t=>`<button type="button" class="tg${st.tags.has(t)?' on':''}" data-t="${esc(t)}" aria-pressed="${st.tags.has(t)}">${esc(t)}</button>`).join('');
+}
+function match(m){
+  if(st.cat&&m.categoria!==st.cat)return false;
+  if(st.age){const[a,b]=st.age.split('-').map(Number);if(m.idade==null||m.idade<a||m.idade>b)return false}
+  for(const t of st.tags)if(!(m.tags||[]).includes(t))return false;
+  if(st.q){const h=norm([m.nome,m.codigo,m.aparencia,m.cabelo,m.olhos,m.distintivos,(m.tags||[]).join(' '),(cat(m.categoria)||{}).nome].join(' '));
+    if(!norm(st.q).split(/\s+/).every(w=>h.includes(w)))return false}
+  return true;
+}
+function grid(keep){
+  if(!keep)shown=PER;
+  const all=M.filter(match),list=all.slice(0,shown);
+  $('#grid').innerHTML=list.length?list.map(m=>{
+    const c=cat(m.categoria);
+    const sub=[c&&c.nome,m.idade!=null&&m.idade+' anos (visual)'].filter(Boolean).join(' · ')||'Modelo virtual';
+    return `<button type="button" class="card" data-id="${esc(m.id)}" aria-label="${esc(m.nome)}, ver perfil">${ph(m,m.fotos.capa,{b:m.fotos.hover,top:`<span class="num"><span>${esc(m.codigo)}</span>${m.situacao&&m.situacao!=='Disponível'?`<span>${esc(m.situacao)}</span>`:''}</span>`})}<b>${esc(m.nome)}</b><span class="m">${esc(sub)}</span></button>`;
+  }).join(''):`<div class="empty"><b>${M.length&&st.cat&&!M.some(m=>m.categoria===st.cat)?'Em breve.':'Nenhum perfil encontrado.'}</b><p>${M.length&&st.cat&&!M.some(m=>m.categoria===st.cat)?'Os talentos desta categoria estão sendo preparados.':'Tente outra combinação de filtros.'}</p><button type="button" class="btn sm" id="clr2">Ver todo o casting →</button></div>`;
+  $('#cnt').textContent=all.length+(all.length===1?' perfil':' perfis');
+  const r=all.length-list.length,mb=$('#more');
+  mb.hidden=!r;
+  if(r){mb.querySelector('b').textContent=`Ver mais modelos (+${Math.min(r,PER)})`;mb.querySelector('span').textContent=`Mostrando ${list.length} de ${all.length}`}
+  $('#clr').hidden=!(st.cat||st.q||st.age||st.tags.size);
+  touch();
+}
+function render(){catCards();tagChips();grid()}
+function reset(){st.cat='';st.q='';st.age='';st.tags.clear();$('#q').value='';$('#age').value='';render()}
+$('#q').addEventListener('input',e=>{st.q=e.target.value.trim();grid()});
+$('#age').addEventListener('change',e=>{st.age=e.target.value;grid()});
+$('#clr').addEventListener('click',reset);
+$('#moreb').addEventListener('click',()=>{const n=document.querySelectorAll('#grid .card').length;shown+=PER;grid(true);const c=document.querySelectorAll('#grid .card')[n];if(c)c.focus({preventScroll:true})});
+document.addEventListener('click',e=>{
+  const c=e.target.closest('.col');if(c){st.cat=st.cat===c.dataset.c?'':c.dataset.c;catCards();grid();return}
+  const t=e.target.closest('.tg');if(t){const v=t.dataset.t;st.tags.has(v)?st.tags.delete(v):st.tags.add(v);tagChips();grid();return}
+  if(e.target.closest('#clr2')){reset();return}
+  const k=e.target.closest('.card');if(k){location.hash=k.dataset.id;return}
+  const p=e.target.closest('.cp');if(p){location.hash='c-'+p.dataset.id}
+});
+render();
+
+/* touch: on devices without hover, the card in the middle of the screen shows the colour pose */
+let io;
+function touch(){
+  if(matchMedia('(hover:hover)').matches||!('IntersectionObserver' in window))return;
+  if(io)io.disconnect();
+  io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('tap',e.isIntersecting)),{rootMargin:'-38% 0px -38% 0px'});
+  document.querySelectorAll('.card').forEach(c=>io.observe(c));
+}
+
+/* ---- campaigns ---- */
+$('#camps').innerHTML=CP.length?`<div class="camps">${CP.map(c=>{
+  const names=(c.modelos||[]).map(id=>(M.find(m=>m.id===id)||{}).nome).filter(Boolean).join(', ');
+  return `<button type="button" class="cp" data-id="${esc(c.id)}">${ph({nome:c.titulo},c.capa,{alt:c.titulo})}<small>${esc([c.tipo,c.ano].filter(Boolean).join(' · '))}</small><b>${esc(c.titulo)}</b>${names?`<span>Com ${esc(names)}</span>`:''}</button>`}).join('')}</div>`
+  :`<div class="empty"><b>Em produção.</b><p>As primeiras campanhas e editoriais com os talentos do Glitch Models estão sendo finalizadas.</p></div>`;
+
+/* ---- profile ---- */
+const pm=$('#pm');let last=null;
+function show(html){
+  pm.innerHTML=`<div class="pbox"><button type="button" class="px" id="px" aria-label="Fechar">✕</button>${html}</div>`;
+  if(pm.hidden){last=document.activeElement;pm.hidden=false;document.body.classList.add('lock')}
+  pm.scrollTop=0;$('#px').focus();
+}
+function portfolio(m,tipo){
+  const items=(m.portfolio||[]).filter(p=>!tipo||p.tipo===tipo);
+  return items.map(p=>`<figure data-src="${esc(p.src)}">${ph(m,p.src)}<figcaption>${esc(TIPOS[p.tipo]||p.tipo||'')}</figcaption></figure>`).join('');
+}
+function openModel(i){
+  const m=M[i],c=cat(m.categoria);
+  const rows=[['Aparência',m.aparencia],['Idade visual',m.idade!=null?m.idade+' anos':''],['Altura',m.altura],['Proporções',m.proporcoes],['Cabelo',m.cabelo],['Olhos',m.olhos],['Distintivos',m.distintivos]].filter(r=>r[1]);
+  const tipos=[...new Set((m.portfolio||[]).map(p=>p.tipo))].filter(t=>TIPOS[t]);
+  const msg=encodeURIComponent(`Olá, Glitch Studio! Tenho interesse no modelo ${m.nome} (${m.codigo}) do Glitch Models.`);
+  const prev=M[(i-1+M.length)%M.length],next=M[(i+1)%M.length];
+  const ap=m.aplicacoes||[];
+  show(`<div class="ptop">
+  <div class="pgal">${ph(m,m.fotos.capa,{cls:'main',eager:true})}</div>
+  <div class="pinfo">
+   <span class="sn"><b>${esc(m.codigo)}</b> · GLITCH MODELS</span>
+   <h3 id="pname">${esc(m.nome)}</h3>
+   <div class="chips">${c?`<span class="l">${esc(c.nome)}</span>`:''}${m.situacao?`<span>${esc(m.situacao)}</span>`:''}<span class="v">Modelo virtual</span></div>
+   ${m.bio?`<p class="bio">${esc(m.bio)}</p>`:''}
+   ${rows.length?`<dl>${rows.map(r=>`<dt>${r[0]}</dt><dd>${esc(r[1])}</dd>`).join('')}</dl>`:''}
+   ${(m.tags||[]).length?`<div class="ptags">${m.tags.map(t=>`<span>${esc(t)}</span>`).join('')}</div>`:''}
+   <div class="pact"><a class="btn lime" href="https://wa.me/${WA}?text=${msg}" target="_blank" rel="noopener">Solicitar proposta ↗</a><a class="btn ghost" href="https://glitchstudio.ia.br/" target="_blank" rel="noopener">Glitch Studio ↗</a></div>
+   <div class="pnav"><button type="button" class="btn ghost sm" data-go="${esc(prev.id)}">← ${esc(first(prev.nome))}</button><button type="button" class="btn ghost sm" data-go="${esc(next.id)}">${esc(first(next.nome))} →</button></div>
+   <p class="pfine">A contratação é feita pelo Glitch Studio.</p>
+  </div></div>
+  ${(m.portfolio||[]).filter(p=>p.src!==m.fotos.capa).length?`<div class="pblk"><h4>Portfólio</h4>
+   ${tipos.length>1?`<div class="ptabs"><button type="button" class="tg on" data-pt="">Tudo</button>${tipos.map(t=>`<button type="button" class="tg" data-pt="${t}">${TIPOS[t]}</button>`).join('')}</div>`:''}
+   <div class="pgrid" id="pgrid">${portfolio(m)}</div></div>`:''}
+  ${ap.length?`<div class="pblk"><h4>Possibilidades de aplicação</h4><div class="apl">${ap.map(a=>`<span>${esc(a)}</span>`).join('')}</div></div>`:''}`);
+  pm.dataset.i=i;
+}
+function openCamp(c){
+  const names=(c.modelos||[]).map(id=>M.find(m=>m.id===id)).filter(Boolean);
+  show(`<span class="sn"><b>${esc(c.tipo||'Campanha')}</b>${c.ano?' · '+esc(c.ano):''}</span><h3 id="pname" style="font-size:clamp(40px,5vw,64px);margin-bottom:16px">${esc(c.titulo)}</h3>
+  ${c.marca?`<p class="bio">${esc(c.marca)}</p>`:''}
+  ${names.length?`<div class="chips">${names.map(m=>`<span class="l" style="cursor:pointer" data-go="${esc(m.id)}">${esc(m.nome)}</span>`).join('')}</div>`:''}
+  <div class="pgrid">${[c.capa].concat(c.imagens||[]).filter(Boolean).map(s=>`<figure data-src="${esc(s)}">${ph({nome:c.titulo},s,{alt:c.titulo})}</figure>`).join('')}</div>`);
+}
+function close(){
+  if(pm.hidden)return;pm.hidden=true;pm.innerHTML='';document.body.classList.remove('lock');
+  const h=location.hash.slice(1);
+  if(M.some(m=>m.id===h))history.replaceState(null,'',location.pathname+location.search+'#casting');
+  else if(h.startsWith('c-'))history.replaceState(null,'',location.pathname+location.search+'#campanhas');
+  if(last&&last.focus)last.focus();
+}
+pm.addEventListener('click',e=>{
+  if(e.target===pm||e.target.closest('#px')){close();return}
+  const g=e.target.closest('[data-go]');if(g){location.hash=g.dataset.go;return}
+  const t=e.target.closest('[data-pt]');if(t){pm.querySelectorAll('[data-pt]').forEach(x=>x.classList.toggle('on',x===t));$('#pgrid').innerHTML=portfolio(M[pm.dataset.i],t.dataset.pt);return}
+  const f=e.target.closest('figure[data-src]');if(f&&!f.querySelector('.miss')){const lb=$('#lb');lb.querySelector('img').src='images/'+f.dataset.src;lb.hidden=false}
+});
+$('#lb').addEventListener('click',()=>{$('#lb').hidden=true});
+document.addEventListener('keydown',e=>{
+  if(!$('#lb').hidden){if(e.key==='Escape')$('#lb').hidden=true;return}
+  if(pm.hidden)return;
+  if(e.key==='Escape')close();
+  if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const b=pm.querySelectorAll('.pnav [data-go]')[e.key==='ArrowRight'?1:0];if(b)location.hash=b.dataset.go}
+});
+function route(){
+  const h=location.hash.slice(1);const i=M.findIndex(m=>m.id===h);
+  if(i>=0)return openModel(i);
+  if(h.startsWith('c-')){const c=CP.find(x=>x.id===h.slice(2));if(c)return openCamp(c)}
+  close();
+}
+window.addEventListener('hashchange',route);route();
+
+/* menu */
+const hdr=$('#hdr'),mb=$('#mbtn');
+mb.addEventListener('click',()=>{const o=hdr.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+document.querySelectorAll('#mnav a').forEach(a=>a.addEventListener('click',()=>{hdr.classList.remove('open');mb.setAttribute('aria-expanded',false)}));
+
+/* glitch */
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const gs=document.querySelectorAll('.hero .glitch');
+  setTimeout(()=>gs.forEach(g=>g.classList.add('go')),400);
+  setInterval(()=>gs.forEach(g=>{g.classList.remove('go');void g.offsetWidth;g.classList.add('go')}),7000);
+}
+})();
+</script>
+</body>
+</html>
