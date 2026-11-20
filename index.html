@@ -4,7 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Glitch Models — Estúdio de modelos virtuais</title>
-<meta name="description" content="Glitch Models é um casting digital que explora moda, identidade e inteligência artificial. Um projeto Glitch Studio.">
+<meta name="description" content="Novos rostos para a sua marca. Casting digital de modelos virtuais para campanhas, catálogos, e-commerce e editoriais. Um projeto Glitch Studio.">
+<!-- Prévia de link (WhatsApp, Instagram, Facebook, LinkedIn, X). Se o endereço do site mudar, troque nas 3 linhas com "https://models.glitchstudio.ia.br/". -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Glitch Models">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://models.glitchstudio.ia.br/">
+<meta property="og:title" content="Glitch Models — Casting digital">
+<meta property="og:description" content="Novos rostos para a sua marca. Modelos virtuais para campanhas, catálogos, e-commerce e editoriais.">
+<meta property="og:image" content="https://models.glitchstudio.ia.br/images/og-glitch-models.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Logo Glitch Models e cinco modelos virtuais do casting">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Glitch Models — Casting digital">
+<meta name="twitter:description" content="Novos rostos para a sua marca. Modelos virtuais para campanhas, catálogos, e-commerce e editoriais.">
+<meta name="twitter:image" content="https://models.glitchstudio.ia.br/images/og-glitch-models.jpg">
 <meta name="theme-color" content="#0d0d0c">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%23d9f76f%22/%3E%3Cpath d=%22M45 23.5A17 17 0 1 0 47 36H33%22 fill=%22none%22 stroke=%22%23111%22 stroke-width=%227.5%22/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -276,7 +291,6 @@ dl dt:nth-last-child(2),dl dd:last-child{border-bottom:1px solid var(--line)}
 <!-- 01 · INÍCIO -->
 <div class="hero"><div class="wrap">
 <svg class="badge" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="c" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs><text><textPath href="#c" textLength="270" lengthAdjust="spacing">CASTING DIGITAL ✦ MODA · IDENTIDADE · IA ✦</textPath></text><path d="M60 47 63 57 73 60 63 63 60 73 57 63 47 60 57 57Z" fill="#d9f76f"/></svg>
-<span class="tag"><b>●</b> Estúdio de modelos virtuais · <span id="total">34</span> perfis</span>
 <h1><span class="glitch" data-t="Novos rostos">Novos rostos</span><br><em><span class="glitch" data-t="para a sua marca.">para a sua marca.</span></em></h1>
 <p><b>Glitch Models é um casting digital</b> que explora moda, identidade e inteligência artificial.</p>
 <div class="cta"><a class="btn lime" href="#casting">Ver casting →</a><a class="btn ghost" href="#servicos">Possibilidades de aplicação</a></div>
@@ -379,6 +393,7 @@ async function load(f,fb){try{const r=await fetch(f,{cache:'no-cache'});if(!r.ok
 const D=await load('modelos.json',{categorias:[],modelos:[]});
 const CP=(await load('campanhas.json',{campanhas:[]})).campanhas||[];
 const C=D.categorias||[],M=D.modelos||[];
+const pm=$('#pm');let last=null,io=null,tq=false,tcur=null;
 const cat=id=>C.find(c=>c.id===id);
 
 /* photo frame: a = main image, b = optional second image layered on top */
@@ -387,7 +402,6 @@ function ph(m,a,o={}){
   return `<div class="ph ${o.cls||''}${o.b?'':' solo'}" data-i="${esc(ini(m.nome))}">${o.top||''}<img class="a" src="images/${esc(a)}" alt="${esc(o.alt||m.nome+', modelo virtual Glitch Models')}" ${o.eager?'':'loading="lazy"'} onerror="this.parentNode.classList.add('miss')">${b}</div>`;
 }
 
-$('#total').textContent=M.length;
 /* hero: fixed models always appear (first one in the centre), the rest are drawn at random on every visit */
 function hero(){
   const H=D.hero||{},n=H.total||5;
@@ -448,18 +462,26 @@ document.addEventListener('click',e=>{
   const c=e.target.closest('.col');if(c){st.cat=st.cat===c.dataset.c?'':c.dataset.c;catCards();grid();return}
   const t=e.target.closest('.tg');if(t){const v=t.dataset.t;st.tags.has(v)?st.tags.delete(v):st.tags.add(v);tagChips();grid();return}
   if(e.target.closest('#clr2')){reset();return}
-  const k=e.target.closest('.card');if(k){location.hash=k.dataset.id;return}
-  const p=e.target.closest('.cp');if(p){location.hash='c-'+p.dataset.id}
+  const k=e.target.closest('.card');if(k){e.preventDefault();go(k.dataset.id);return}
+  const s=e.target.closest('#strip a');if(s){e.preventDefault();go(s.getAttribute('href').slice(1));return}
+  const p=e.target.closest('.cp');if(p){go('c-'+p.dataset.id)}
 });
 render();
 
-/* touch: on devices without hover, the card in the middle of the screen shows the colour pose */
-let io;
+/* touch: on devices without hover, only the single card closest to the centre of the screen shows colour */
+function touchPick(){
+  tq=false;
+  const cy=innerHeight/2,cx=innerWidth/2;let best=null,bd=Infinity;
+  document.querySelectorAll('#grid .card').forEach(c=>{const r=c.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;
+    const d=Math.hypot((r.top+r.height/2-cy)*1,(r.left+r.width/2-cx)*.6);if(d<bd){bd=d;best=c}});
+  if(best&&bd>innerHeight*.32)best=null;
+  if(best!==tcur){if(tcur)tcur.classList.remove('tap');if(best)best.classList.add('tap');tcur=best}
+}
 function touch(){
-  if(matchMedia('(hover:hover)').matches||!('IntersectionObserver' in window))return;
-  if(io)io.disconnect();
-  io=new IntersectionObserver(es=>es.forEach(e=>e.target.classList.toggle('tap',e.isIntersecting)),{rootMargin:'-38% 0px -38% 0px'});
-  document.querySelectorAll('.card').forEach(c=>io.observe(c));
+  if(matchMedia('(hover:hover)').matches)return;
+  tcur=null;
+  if(!io){io=true;addEventListener('scroll',()=>{if(!tq){tq=true;requestAnimationFrame(touchPick)}},{passive:true});addEventListener('resize',()=>requestAnimationFrame(touchPick))}
+  requestAnimationFrame(touchPick);
 }
 
 /* ---- campaigns ---- */
@@ -469,7 +491,6 @@ $('#camps').innerHTML=CP.length?`<div class="camps">${CP.map(c=>{
   :`<div class="empty"><b>Em produção.</b><p>As primeiras campanhas e editoriais com os talentos do Glitch Models estão sendo finalizadas.</p></div>`;
 
 /* ---- profile ---- */
-const pm=$('#pm');let last=null;
 function show(html){
   pm.innerHTML=`<div class="pbox"><button type="button" class="px" id="px" aria-label="Fechar">✕</button>${html}</div>`;
   if(pm.hidden){last=document.activeElement;pm.hidden=false;document.body.classList.add('lock')}
@@ -515,13 +536,13 @@ function openCamp(c){
 function close(){
   if(pm.hidden)return;pm.hidden=true;pm.innerHTML='';document.body.classList.remove('lock');
   const h=location.hash.slice(1);
-  if(M.some(m=>m.id===h))history.replaceState(null,'',location.pathname+location.search+'#casting');
-  else if(h.startsWith('c-'))history.replaceState(null,'',location.pathname+location.search+'#campanhas');
+  if(M.some(m=>m.id===h))setHash('casting',true);
+  else if(h.startsWith('c-'))setHash('campanhas',true);
   if(last&&last.focus)last.focus();
 }
 pm.addEventListener('click',e=>{
   if(e.target===pm||e.target.closest('#px')){close();return}
-  const g=e.target.closest('[data-go]');if(g){location.hash=g.dataset.go;return}
+  const g=e.target.closest('[data-go]');if(g){go(g.dataset.go);return}
   const t=e.target.closest('[data-pt]');if(t){pm.querySelectorAll('[data-pt]').forEach(x=>x.classList.toggle('on',x===t));$('#pgrid').innerHTML=portfolio(M[pm.dataset.i],t.dataset.pt);return}
   const f=e.target.closest('figure[data-src]');if(f&&!f.querySelector('.miss')){const lb=$('#lb');lb.querySelector('img').src='images/'+f.dataset.src;lb.hidden=false}
 });
@@ -530,15 +551,17 @@ document.addEventListener('keydown',e=>{
   if(!$('#lb').hidden){if(e.key==='Escape')$('#lb').hidden=true;return}
   if(pm.hidden)return;
   if(e.key==='Escape')close();
-  if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const b=pm.querySelectorAll('.pnav [data-go]')[e.key==='ArrowRight'?1:0];if(b)location.hash=b.dataset.go}
+  if(e.key==='ArrowRight'||e.key==='ArrowLeft'){const b=pm.querySelectorAll('.pnav [data-go]')[e.key==='ArrowRight'?1:0];if(b)go(b.dataset.go)}
 });
 function route(){
-  const h=location.hash.slice(1);const i=M.findIndex(m=>m.id===h);
-  if(i>=0)return openModel(i);
-  if(h.startsWith('c-')){const c=CP.find(x=>x.id===h.slice(2));if(c)return openCamp(c)}
-  close();
+  let h='';try{h=decodeURIComponent(location.hash.slice(1))}catch(e){}
+  if(!show2(h))close();
 }
-window.addEventListener('hashchange',route);route();
+/* open views directly; the address is updated only as a bonus, so a tablet or in-app browser that ignores hash changes still opens the profile */
+function show2(h){const i=M.findIndex(m=>m.id===h);if(i>=0){openModel(i);return true}if(h.startsWith('c-')){const c=CP.find(x=>x.id===h.slice(2));if(c){openCamp(c);return true}}return false}
+function setHash(h,replace){try{const u=location.pathname+location.search+(h?'#'+h:'');replace?history.replaceState(null,'',u):history.pushState(null,'',u)}catch(e){}}
+function go(h){const was=!pm.hidden;if(show2(h))setHash(h,was)}
+window.addEventListener('hashchange',route);window.addEventListener('popstate',route);route();
 
 /* menu */
 const hdr=$('#hdr'),mb=$('#mbtn');
