@@ -400,7 +400,9 @@ const first=n=>n.split(' ')[0];
 async function load(f,fb){try{const r=await fetch(f,{cache:'no-cache'});if(!r.ok)throw 0;return await r.json()}catch(e){return fb}}
 const D=await load('modelos.json',{categorias:[],modelos:[]});
 const CP=(await load('campanhas.json',{campanhas:[]})).campanhas||[];
-const C=D.categorias||[],M=D.modelos||[];
+const C=D.categorias||[],M=(D.modelos||[]).filter(m=>m.ativo!==false);
+const AGE=m=>{const v=m.idade;if(v==null||v==='')return null;return Array.isArray(v)?[+v[0],+v[v.length-1]]:[+v,+v]};
+const AGET=m=>{const a=AGE(m);return a?(a[0]===a[1]?a[0]:a[0]+'–'+a[1])+' anos':''};
 const pm=$('#pm');let last=null,io=null,tq=false,tcur=null;
 const cat=id=>C.find(c=>c.id===id);
 
@@ -434,14 +436,14 @@ function catCards(){
     return `<button type="button" class="col${st.cat===c.id?' on':''}" data-c="${c.id}" aria-pressed="${st.cat===c.id}"><i><span>0${i+1}</span><span>${n?n+(n===1?' perfil':' perfis'):'em breve'}</span></i><div><b>${esc(c.nome)}</b><small>${esc(c.conceito)}</small></div></button>`}).join('');
 }
 function tagChips(){
-  const all=[...new Set(M.flatMap(m=>m.tags||[]))].sort((a,b)=>a.localeCompare(b,'pt'));
+  const all=(D.filtrosTags||[...new Set(M.flatMap(m=>m.tags||[]))].sort((a,b)=>a.localeCompare(b,'pt'))).filter(t=>M.some(m=>(m.tags||[]).includes(t)));
   $('#tags').innerHTML=all.map(t=>`<button type="button" class="tg${st.tags.has(t)?' on':''}" data-t="${esc(t)}" aria-pressed="${st.tags.has(t)}">${esc(t)}</button>`).join('');
 }
 function match(m){
   if(st.cat&&m.categoria!==st.cat)return false;
-  if(st.age){const[a,b]=st.age.split('-').map(Number);if(m.idade==null||m.idade<a||m.idade>b)return false}
+  if(st.age){const[a,b]=st.age.split('-').map(Number),r=AGE(m);if(!r||r[1]<a||r[0]>b)return false}
   for(const t of st.tags)if(!(m.tags||[]).includes(t))return false;
-  if(st.q){const h=norm([m.nome,m.codigo,m.aparencia,m.cabelo,m.olhos,m.distintivos,(m.tags||[]).join(' '),(cat(m.categoria)||{}).nome].join(' '));
+  if(st.q){const h=norm([m.nome,m.codigo,m.aparencia,m.cabelo,m.olhos,m.distintivos,(m.tags||[]).join(' '),(cat(m.categoria)||{}).nome,m.bio].join(' '));
     if(!norm(st.q).split(/\s+/).every(w=>h.includes(w)))return false}
   return true;
 }
@@ -450,7 +452,7 @@ function grid(keep){
   const all=M.filter(match),list=all.slice(0,shown);
   $('#grid').innerHTML=list.length?list.map(m=>{
     const c=cat(m.categoria);
-    const sub=[c&&c.nome,m.idade!=null&&m.idade+' anos (visual)'].filter(Boolean).join(' · ')||'Modelo virtual';
+    const sub=(c&&c.nome)||'Modelo virtual';
     return `<button type="button" class="card" data-id="${esc(m.id)}" aria-label="${esc(m.nome)}, ver perfil">${ph(m,m.fotos.capa,{b:m.fotos.hover,top:`<span class="num"><span>${esc(m.codigo)}</span>${m.situacao&&m.situacao!=='Disponível'?`<span>${esc(m.situacao)}</span>`:''}</span>`})}<b>${esc(m.nome)}</b><span class="m">${esc(sub)}</span></button>`;
   }).join(''):`<div class="empty"><b>${M.length&&st.cat&&!M.some(m=>m.categoria===st.cat)?'Em breve.':'Nenhum perfil encontrado.'}</b><p>${M.length&&st.cat&&!M.some(m=>m.categoria===st.cat)?'Os talentos desta categoria estão sendo preparados.':'Tente outra combinação de filtros.'}</p><button type="button" class="btn sm" id="clr2">Ver todo o casting →</button></div>`;
   $('#cnt').textContent=all.length+(all.length===1?' perfil':' perfis');
@@ -510,7 +512,7 @@ function portfolio(m,tipo){
 }
 function openModel(i){
   const m=M[i],c=cat(m.categoria);
-  const rows=[['Aparência',m.aparencia],['Idade visual',m.idade!=null?m.idade+' anos':''],['Altura',m.altura],['Proporções',m.proporcoes],['Cabelo',m.cabelo],['Olhos',m.olhos],['Distintivos',m.distintivos]].filter(r=>r[1]);
+  const rows=[['Aparência',m.aparencia],['Altura',m.altura],['Proporções',m.proporcoes],['Cabelo',m.cabelo],['Olhos',m.olhos],['Distintivos',m.distintivos]].filter(r=>r[1]);
   const tipos=[...new Set((m.portfolio||[]).map(p=>p.tipo))].filter(t=>TIPOS[t]);
   const msg=encodeURIComponent(`Olá, Glitch Studio! Tenho interesse no modelo ${m.nome} (${m.codigo}) do Glitch Models.`);
   const prev=M[(i-1+M.length)%M.length],next=M[(i+1)%M.length];

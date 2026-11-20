@@ -4,13 +4,16 @@
   "id: nome curto sem acento nem espaço, vira o link do perfil (ex.: site/#mia).",
   "codigo: GM-001, GM-002...  categoria: offmodel, raw, neo-muse ou neural.",
   "situacao: texto livre, ex.: Disponível, Em breve, Exclusivo.",
-  "idade: número da idade visual representada (ex.: 24). Deixe null se não quiser mostrar.",
   "fotos.capa: foto que aparece em preto e branco no catálogo. fotos.hover: outra pose, que aparece colorida ao passar o mouse.",
   "portfolio: lista de fotos do perfil. tipo: retrato, corpo, poses, editorial ou comercial.",
   "Todas as fotos ficam na pasta images/ com o nome exato escrito aqui.",
   "Campo vazio ('') ou lista vazia ([]) não aparece no site.",
   "hero: 'fixos' são os modelos que sempre aparecem no topo do site (o primeiro fica no centro). Os demais são sorteados a cada visita.",
-  "porPagina: quantos modelos o catálogo mostra antes do botão 'Ver mais modelos'."
+  "porPagina: quantos modelos o catálogo mostra antes do botão 'Ver mais modelos'.",
+  "idade: faixa de idade visual, ex.: [23, 26] aparece como '23–26 anos'. Use null para não mostrar.",
+  "ativo: true mostra o modelo no site; false deixa o cadastro reservado e escondido (use enquanto não houver foto).",
+  "bio: texto de características visuais que aparece no perfil e entra na busca.",
+  "filtrosTags: tags que aparecem como botões de filtro no catálogo. As demais tags aparecem no perfil e funcionam na busca."
  ],
  "categorias": [
   {
@@ -42,10 +45,13 @@
   {
    "id": "icaro",
    "codigo": "GM-001",
-   "nome": "Ícaro",
+   "nome": "Ícaro Avelar",
    "categoria": "neo-muse",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    28,
+    30
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -53,9 +59,17 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Masculino"
+    "Masculino",
+    "Moreno",
+    "Cabelo ondulado",
+    "Olhos castanhos",
+    "Jovem adulto",
+    "Beleza clássica",
+    "Editorial",
+    "Comercial",
+    "Beleza"
    ],
-   "bio": "",
+   "bio": "Pele morena clara de subtom quente; cabelo castanho-escuro, médio, ondulado e volumoso; olhos castanhos; sobrancelhas marcadas; rosto oval; mandíbula definida; nariz reto; lábios médios; sem barba; expressão serena e olhar direto.",
    "fotos": {
     "capa": "neo-muse-icaro-capa.jpg",
     "hover": ""
@@ -72,15 +86,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "arthur",
    "codigo": "GM-002",
-   "nome": "Arthur",
+   "nome": "Arthur Valente",
    "categoria": "neo-muse",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    19,
+    21
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -88,9 +106,18 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Masculino"
+    "Masculino",
+    "Ruivo",
+    "Cabelo cacheado",
+    "Olhos verdes",
+    "Sardas",
+    "Pele clara",
+    "Traços delicados",
+    "Beleza natural",
+    "Editorial",
+    "Beleza"
    ],
-   "bio": "",
+   "bio": "Pele muito clara de subtom rosado; cabelo ruivo acobreado, curto a médio, muito volumoso e cacheado; olhos verdes com nuances de mel; sobrancelhas ruivas e marcadas; rosto oval; traços delicados e simétricos; nariz fino e reto; lábios médios bem definidos; sardas distribuídas pelo rosto; expressão contemplativa e olhar direto.",
    "fotos": {
     "capa": "neo-muse-arthur-capa.jpg",
     "hover": ""
@@ -107,15 +134,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "gabriel",
    "codigo": "GM-003",
-   "nome": "Gabriel",
+   "nome": "Gabriel Noronha",
    "categoria": "neo-muse",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    20,
+    22
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -123,9 +154,20 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Masculino"
+    "Masculino",
+    "Loiro",
+    "Olhos claros",
+    "Cabelo curto",
+    "Topo volumoso",
+    "Pele clara",
+    "Sem barba",
+    "Beleza clássica",
+    "Jovem adulto",
+    "Editorial",
+    "Comercial",
+    "Moda casual"
    ],
-   "bio": "",
+   "bio": "Pele clara; cabelo loiro escuro a loiro dourado, curto, com laterais mais baixas e topo volumoso penteado de lado; olhos claros, entre verde e cinza; rosto oval levemente angular; maxilar definido; nariz reto; lábios médios; sem barba; expressão neutra e olhar direto.",
    "fotos": {
     "capa": "neo-muse-gabriel-capa.jpg",
     "hover": ""
@@ -142,7 +184,8 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "breno-duarte",
@@ -150,7 +193,10 @@
    "nome": "Breno Duarte",
    "categoria": "neo-muse",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    22,
+    24
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -158,9 +204,20 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Masculino"
+    "Masculino",
+    "Sardas",
+    "Cabelo castanho-claro",
+    "Reflexos acobreados",
+    "Olhos claros",
+    "Pele clara",
+    "Beleza natural",
+    "Traços marcantes",
+    "Jovem adulto",
+    "Editorial",
+    "Comercial",
+    "Beleza"
    ],
-   "bio": "",
+   "bio": "Pele clara de subtom quente; cabelo castanho-claro com reflexos acobreados, curto a médio, volumoso e penteado para trás; olhos claros entre verde e avelã; sardas evidentes no rosto, especialmente na testa, nariz e bochechas; rosto oval levemente angular; maxilar definido; nariz reto; lábios médios; sem barba; expressão neutra e olhar direto.",
    "fotos": {
     "capa": "neo-muse-breno-duarte-capa.jpg",
     "hover": ""
@@ -177,15 +234,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "sasha",
    "codigo": "GM-005",
-   "nome": "Sasha",
+   "nome": "Sasha Noir",
    "categoria": "neo-muse",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    22,
+    24
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -195,9 +256,18 @@
    "tags": [
     "Masculino",
     "Feminino",
-    "Andrógino"
+    "Andrógino",
+    "Beleza andrógina",
+    "Cabelo escuro",
+    "Cabelo liso",
+    "Franja lateral",
+    "Olhos claros",
+    "Traços definidos",
+    "Editorial",
+    "Alta moda",
+    "Minimalismo"
    ],
-   "bio": "",
+   "bio": "Pele clara de subtom neutro; cabelo castanho muito escuro, liso, médio, com acabamento polido e franja lateral longa; olhos claros entre cinza e verde; sobrancelhas escuras e marcadas; rosto oval alongado; maçãs do rosto e mandíbula definidas; nariz reto; lábios médios; expressão séria e olhar direto; apresentação visual andrógina.",
    "fotos": {
     "capa": "neo-muse-sasha-capa.jpg",
     "hover": ""
@@ -214,7 +284,8 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "mia-petronilia",
@@ -222,7 +293,10 @@
    "nome": "Mia Petronilia",
    "categoria": "neo-muse",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    23,
+    25
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -230,9 +304,20 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Feminino"
+    "Feminino",
+    "Cabelo escuro",
+    "Franja",
+    "Cabelo médio",
+    "Olhos castanhos",
+    "Pele de subtom quente",
+    "Traços suaves",
+    "Beleza natural",
+    "Maquiagem leve",
+    "Editorial",
+    "Beleza",
+    "Comercial"
    ],
-   "bio": "",
+   "bio": "Pele clara a média, de subtom quente; cabelo preto ou castanho muito escuro, médio, levemente ondulado e volumoso, com franja; olhos castanhos; sobrancelhas escuras e definidas; rosto oval, com traços suaves; nariz delicado; lábios médios e bem definidos; maquiagem discreta com destaque para os olhos; expressão serena e olhar direto.",
    "fotos": {
     "capa": "neo-muse-mia-petronilia-capa.jpg",
     "hover": ""
@@ -249,7 +334,8 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "vanessa-vega",
@@ -257,7 +343,10 @@
    "nome": "Vanessa Vega",
    "categoria": "neo-muse",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    23,
+    25
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -265,9 +354,22 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Feminino"
+    "Feminino",
+    "Pele morena",
+    "Subtom quente",
+    "Cabelo longo",
+    "Cabelo liso",
+    "Risca central",
+    "Olhos castanhos",
+    "Sobrancelhas marcadas",
+    "Lábios volumosos",
+    "Beleza sofisticada",
+    "Maquiagem",
+    "Editorial",
+    "Beleza",
+    "Comercial"
    ],
-   "bio": "",
+   "bio": "Pele morena média a escura, de subtom quente; cabelo castanho-escuro, muito longo, liso e com risca central; olhos castanhos; sobrancelhas escuras, cheias e definidas; rosto oval levemente alongado; nariz de linhas suaves; lábios volumosos e bem definidos; maquiagem polida com destaque para os olhos e a boca; expressão confiante e olhar direto.",
    "fotos": {
     "capa": "neo-muse-vanessa-vega-capa.jpg",
     "hover": ""
@@ -284,7 +386,8 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "elara-voss",
@@ -292,7 +395,10 @@
    "nome": "Elara Voss",
    "categoria": "neo-muse",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    22,
+    24
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -300,9 +406,20 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Feminino"
+    "Feminino",
+    "Ruiva",
+    "Cabelo acobreado",
+    "Corte curto",
+    "Corte na altura do queixo",
+    "Cabelo desfiado",
+    "Olhos claros",
+    "Pele muito clara",
+    "Sardas",
+    "Beleza natural",
+    "Editorial",
+    "Beleza"
    ],
-   "bio": "",
+   "bio": "Pele muito clara, de subtom neutro a rosado; cabelo ruivo acobreado, curto, na altura do queixo, com textura levemente ondulada e acabamento desfiado; olhos claros, entre azul e cinza; sobrancelhas claras e delicadas; rosto oval levemente alongado; nariz delicado; lábios médios; sardas suaves no rosto e nos ombros; expressão serena e olhar direto.",
    "fotos": {
     "capa": "neo-muse-elara-voss-capa.jpg",
     "hover": ""
@@ -319,7 +436,8 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "laura-nakamura",
@@ -327,7 +445,10 @@
    "nome": "Laura Nakamura",
    "categoria": "neo-muse",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    26,
+    28
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -335,9 +456,22 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Feminino"
+    "Feminino",
+    "Cabelo longo",
+    "Cabelo liso",
+    "Castanho-escuro",
+    "Reflexos castanhos",
+    "Risca central",
+    "Olhos castanhos",
+    "Pele clara",
+    "Traços delicados",
+    "Maquiagem leve",
+    "Beleza sofisticada",
+    "Editorial",
+    "Beleza",
+    "Comercial"
    ],
-   "bio": "",
+   "bio": "Pele clara de subtom neutro a levemente quente; cabelo longo, liso, castanho-escuro com reflexos castanhos mais claros, risca central; olhos castanhos; sobrancelhas naturais e suavemente definidas; rosto oval; traços delicados e harmoniosos; nariz de linhas suaves; lábios médios e bem definidos; maquiagem discreta e acabamento polido; expressão serena e olhar direto.",
    "fotos": {
     "capa": "neo-muse-laura-nakamura-capa.jpg",
     "hover": ""
@@ -354,15 +488,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "florence",
    "codigo": "GM-010",
-   "nome": "Florence",
+   "nome": "Florence Bellamy",
    "categoria": "neo-muse",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    22,
+    24
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -370,9 +508,21 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Feminino"
+    "Feminino",
+    "Loiro",
+    "Cabelo longo",
+    "Cabelo ondulado",
+    "Camadas",
+    "Olhos claros",
+    "Azul acinzentado",
+    "Pele clara",
+    "Sardas discretas",
+    "Beleza natural",
+    "Editorial",
+    "Beleza",
+    "Moda contemporânea"
    ],
-   "bio": "",
+   "bio": "Pele clara de subtom neutro a levemente rosado; cabelo loiro escuro a loiro mel, longo, volumoso, com ondas suaves e camadas frontais; olhos claros entre azul e cinza; sobrancelhas naturais; rosto oval levemente alongado; nariz delicado e reto; lábios médios; sardas discretas no rosto e colo; expressão serena, olhar direto e levemente introspectivo.",
    "fotos": {
     "capa": "neo-muse-florence-capa.jpg",
     "hover": ""
@@ -389,7 +539,8 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "rebecca-diop",
@@ -397,7 +548,10 @@
    "nome": "Rebecca Diop",
    "categoria": "neo-muse",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    24,
+    26
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -405,9 +559,21 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Feminino"
+    "Feminino",
+    "Pele escura",
+    "Subtom quente",
+    "Cabelo preto",
+    "Rabo de cavalo alto",
+    "Olhos castanhos escuros",
+    "Sobrancelhas marcadas",
+    "Lábios volumosos",
+    "Maçãs do rosto definidas",
+    "Beleza sofisticada",
+    "Editorial",
+    "Beleza",
+    "Joalheria"
    ],
-   "bio": "",
+   "bio": "Pele escura de subtom quente; cabelo preto, longo e preso em rabo de cavalo alto; olhos castanho-escuros; sobrancelhas escuras, cheias e bem definidas; rosto oval com maçãs do rosto marcadas; nariz de base suave; lábios volumosos e bem definidos; maquiagem sofisticada com destaque para os olhos; expressão confiante e olhar direto.",
    "fotos": {
     "capa": "neo-muse-rebecca-diop-capa.jpg",
     "hover": ""
@@ -424,14 +590,16 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
-   "id": "talles",
-   "codigo": "GM-012",
-   "nome": "Talles",
-   "categoria": "neural",
+   "id": "marco",
+   "codigo": "GM-053",
+   "nome": "Marco",
+   "categoria": "neo-muse",
    "situacao": "Disponível",
+   "ativo": false,
    "idade": null,
    "aparencia": "",
    "altura": "",
@@ -443,6 +611,452 @@
     "Masculino"
    ],
    "bio": "",
+   "fotos": {
+    "capa": "neo-muse-marco-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neo-muse-marco-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "melissa",
+   "codigo": "GM-054",
+   "nome": "Melissa",
+   "categoria": "neo-muse",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neo-muse-melissa-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neo-muse-melissa-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "irma",
+   "codigo": "GM-055",
+   "nome": "Irma",
+   "categoria": "neo-muse",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neo-muse-irma-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neo-muse-irma-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "marta",
+   "codigo": "GM-056",
+   "nome": "Marta",
+   "categoria": "neo-muse",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neo-muse-marta-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neo-muse-marta-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "amaya",
+   "codigo": "GM-057",
+   "nome": "Amaya",
+   "categoria": "neo-muse",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neo-muse-amaya-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neo-muse-amaya-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "rebeca",
+   "codigo": "GM-058",
+   "nome": "Rebeca",
+   "categoria": "neo-muse",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neo-muse-rebeca-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neo-muse-rebeca-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "melinda",
+   "codigo": "GM-059",
+   "nome": "Melinda",
+   "categoria": "neo-muse",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neo-muse-melinda-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neo-muse-melinda-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "janine",
+   "codigo": "GM-060",
+   "nome": "Janine",
+   "categoria": "neo-muse",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neo-muse-janine-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neo-muse-janine-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "emma",
+   "codigo": "GM-061",
+   "nome": "Emma",
+   "categoria": "neo-muse",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neo-muse-emma-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neo-muse-emma-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "eloween",
+   "codigo": "GM-062",
+   "nome": "Eloween",
+   "categoria": "neo-muse",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neo-muse-eloween-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neo-muse-eloween-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "catarina",
+   "codigo": "GM-063",
+   "nome": "Catarina",
+   "categoria": "neo-muse",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neo-muse-catarina-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neo-muse-catarina-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "aria",
+   "codigo": "GM-064",
+   "nome": "Aria",
+   "categoria": "neo-muse",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neo-muse-aria-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neo-muse-aria-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "talles",
+   "codigo": "GM-012",
+   "nome": "Talles Montenegro",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "idade": [
+    22,
+    24
+   ],
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino",
+    "Cabelo castanho-escuro",
+    "Cabelo ondulado",
+    "Cabelo volumoso",
+    "Olhos castanhos",
+    "Subtom quente",
+    "Maxilar definido",
+    "Jovem adulto",
+    "Beleza natural",
+    "Moda masculina",
+    "Editorial",
+    "Esportivo",
+    "Comercial"
+   ],
+   "bio": "Pele clara a média, de subtom quente; cabelo castanho-escuro, curto a médio, espesso, ondulado e volumoso, com topo mais longo e laterais aparadas; olhos castanhos, com possível nuance avelã; sobrancelhas escuras e marcadas; rosto oval levemente quadrado; maxilar definido; nariz reto; lábios médios; leves sardas ou pequenas marcas naturais no rosto; expressão tranquila e olhar direto.",
    "fotos": {
     "capa": "neural-talles-capa.jpg",
     "hover": ""
@@ -459,15 +1073,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "lucas",
    "codigo": "GM-013",
-   "nome": "Lucas",
+   "nome": "Lucas Fitzgerald",
    "categoria": "neural",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    23,
+    25
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -475,9 +1093,21 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Masculino"
+    "Masculino",
+    "Ruivo acobreado",
+    "Cabelo cacheado",
+    "Cabelo volumoso",
+    "Olhos claros",
+    "Sardas",
+    "Barba ruiva",
+    "Bigode",
+    "Pele clara",
+    "Beleza natural",
+    "Editorial",
+    "Moda casual",
+    "Estilo orgânico"
    ],
-   "bio": "",
+   "bio": "Pele clara, com subtom neutro a levemente rosado; cabelo ruivo acobreado, médio, muito cacheado e volumoso; olhos claros entre verde e azul; sardas evidentes no nariz e nas bochechas; sobrancelhas ruivas e naturais; rosto oval levemente alongado; nariz reto; lábios médios; barba e bigode ruivos, curtos e discretos; expressão tranquila e olhar direto.",
    "fotos": {
     "capa": "neural-lucas-capa.jpg",
     "hover": ""
@@ -494,15 +1124,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "mauricio",
    "codigo": "GM-014",
-   "nome": "Maurício",
+   "nome": "Maurício Hayashi",
    "categoria": "neural",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    22,
+    24
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -510,9 +1144,21 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Masculino"
+    "Masculino",
+    "Cabelo castanho-escuro",
+    "Cabelo ondulado",
+    "Cabelo médio",
+    "Cabelo volumoso",
+    "Olhos castanhos",
+    "Brincos",
+    "Beleza natural",
+    "Traços suaves",
+    "Jovem adulto",
+    "Moda casual",
+    "Editorial",
+    "Lifestyle"
    ],
-   "bio": "",
+   "bio": "Pele clara a média, com subtom neutro a levemente quente; cabelo castanho-escuro, médio, ondulado e volumoso, com textura natural e comprimento maior nas laterais e na nuca; olhos castanhos-escuros; sobrancelhas escuras e naturais; rosto oval levemente alongado; maxilar suave; nariz reto; lábios médios; pequenos brincos nas duas orelhas; expressão tranquila, com leve sorriso.",
    "fotos": {
     "capa": "neural-mauricio-capa.jpg",
     "hover": ""
@@ -529,7 +1175,8 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "felipe-rocha",
@@ -537,7 +1184,10 @@
    "nome": "Felipe Rocha",
    "categoria": "neural",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    21,
+    23
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -545,9 +1195,21 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Masculino"
+    "Masculino",
+    "Cabelo muito curto",
+    "Buzz cut",
+    "Cabelo castanho-escuro",
+    "Olhos claros",
+    "Olhos verde-avelã",
+    "Sobrancelhas marcadas",
+    "Maxilar definido",
+    "Sem barba",
+    "Beleza masculina",
+    "Esportivo",
+    "Editorial",
+    "Moda casual"
    ],
-   "bio": "",
+   "bio": "Pele clara a média, de subtom quente; cabelo castanho-escuro, muito curto, em corte rente estilo buzz cut; olhos claros, entre verde e avelã; sobrancelhas escuras, espessas e bem definidas; rosto oval levemente angular; maxilar marcado; nariz reto; lábios médios e volumosos; sem barba; expressão neutra e olhar direto.",
    "fotos": {
     "capa": "neural-felipe-rocha-capa.jpg",
     "hover": ""
@@ -564,7 +1226,8 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "noah-ribeiro",
@@ -572,7 +1235,10 @@
    "nome": "Noah Ribeiro",
    "categoria": "neural",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    20,
+    22
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -580,9 +1246,22 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Masculino"
+    "Masculino",
+    "Pele escura",
+    "Subtom quente",
+    "Locs curtas",
+    "Cabelo afro-texturizado",
+    "Cabelo preto",
+    "Olhos castanho-escuros",
+    "Traços naturais",
+    "Sem barba",
+    "Moda urbana",
+    "Streetwear",
+    "Editorial",
+    "Esportivo",
+    "Lifestyle"
    ],
-   "bio": "",
+   "bio": "Pele escura de subtom quente; cabelo preto, curto a médio, formado por locs curtas e espessas, distribuídas em volume no topo; olhos castanho-escuros; sobrancelhas escuras e naturais; rosto oval levemente alongado; maxilar suave e definido; nariz de base mais larga; lábios médios e volumosos; sem barba aparente; expressão serena e olhar direto.",
    "fotos": {
     "capa": "neural-noah-ribeiro-capa.jpg",
     "hover": ""
@@ -599,7 +1278,8 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "mariana-alves",
@@ -607,7 +1287,10 @@
    "nome": "Mariana Alves",
    "categoria": "neural",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    22,
+    24
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -615,9 +1298,22 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Feminino"
+    "Feminino",
+    "Cabelo longo",
+    "Cabelo ondulado",
+    "Cabelo volumoso",
+    "Cabelo escuro",
+    "Olhos claros",
+    "Olhos cinza-azulados",
+    "Pele morena clara",
+    "Subtom quente",
+    "Sobrancelhas marcadas",
+    "Beleza natural",
+    "Beauty",
+    "Editorial",
+    "Comercial"
    ],
-   "bio": "",
+   "bio": "Pele morena clara a média, de subtom quente; cabelo preto ou castanho muito escuro, longo, abundante, ondulado a cacheado solto, com risca lateral; olhos claros, entre cinza e azul acinzentado; sobrancelhas escuras, cheias e definidas; rosto oval, com traços harmoniosos; nariz de linhas suaves; lábios médios e bem definidos; maquiagem leve e polida; expressão serena, com leve sorriso.",
    "fotos": {
     "capa": "neural-mariana-alves-capa.jpg",
     "hover": ""
@@ -634,15 +1330,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "sofia",
    "codigo": "GM-018",
-   "nome": "Sofia",
+   "nome": "Sofia Laurent",
    "categoria": "neural",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    21,
+    23
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -650,9 +1350,23 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Feminino"
+    "Feminino",
+    "Loiro",
+    "Raiz escura",
+    "Cabelo médio",
+    "Cabelo levemente ondulado",
+    "Risca central",
+    "Olhos claros",
+    "Olhos verde-acinzentados",
+    "Pele clara",
+    "Traços delicados",
+    "Maquiagem suave",
+    "Beleza contemporânea",
+    "Editorial",
+    "Beleza",
+    "Comercial"
    ],
-   "bio": "",
+   "bio": "Pele clara a morena clara, de subtom neutro a quente; cabelo loiro com raiz castanho-escura aparente, comprimento médio, levemente ondulado e repartido ao meio; olhos claros, entre verde e cinza; sobrancelhas castanhas, definidas e naturais; rosto oval, com traços delicados e simétricos; nariz reto e delicado; lábios médios e bem definidos; maquiagem suave, com destaque para os olhos; expressão séria e olhar direto.",
    "fotos": {
     "capa": "neural-sofia-capa.jpg",
     "hover": ""
@@ -669,15 +1383,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "isabella",
    "codigo": "GM-019",
-   "nome": "Isabella",
+   "nome": "Isabella Salazar",
    "categoria": "neural",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    22,
+    24
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -685,9 +1403,26 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Feminino"
+    "Feminino",
+    "Cabelo castanho-escuro",
+    "Cabelo longo",
+    "Cabelo ondulado",
+    "Cabelo volumoso",
+    "Risca lateral",
+    "Olhos castanhos",
+    "Olhos cor de mel",
+    "Pele morena",
+    "Subtom quente",
+    "Sobrancelhas marcadas",
+    "Lábios volumosos",
+    "Beleza natural",
+    "Sorriso suave",
+    "Moda feminina",
+    "Beauty",
+    "Comercial",
+    "Lifestyle"
    ],
-   "bio": "",
+   "bio": "Pele morena clara a média, de subtom quente; cabelo castanho-escuro, muito longo, abundante, com ondas largas e bastante volume, repartido lateralmente; olhos castanhos, em tom mel; sobrancelhas escuras, cheias e bem definidas; rosto oval levemente alongado, com maçãs do rosto suaves; nariz reto e delicado; lábios médios e volumosos; pequena pinta próxima à região do rosto; brincos pequenos e discretos; expressão acolhedora, com leve sorriso.",
    "fotos": {
     "capa": "neural-isabella-capa.jpg",
     "hover": ""
@@ -704,15 +1439,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "rafaela",
    "codigo": "GM-020",
-   "nome": "Rafaela",
+   "nome": "Rafaela Srisuk",
    "categoria": "neural",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    22,
+    24
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -720,9 +1459,26 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Feminino"
+    "Feminino",
+    "Ascendência tailandesa",
+    "Brasileira",
+    "Cabelo preto",
+    "Cabelo longo",
+    "Cabelo ondulado",
+    "Cabelo volumoso",
+    "Cabelo brilhante",
+    "Risca central",
+    "Olhos castanhos",
+    "Pele morena clara",
+    "Subtom quente",
+    "Sobrancelhas marcadas",
+    "Beleza natural",
+    "Moda casual",
+    "Comercial",
+    "Lifestyle",
+    "Editorial"
    ],
-   "bio": "",
+   "bio": "Brasileira de ascendência tailandesa; pele morena clara, de subtom quente; cabelo castanho muito escuro ou preto, longo, espesso, com ondas largas e bastante brilho, repartido próximo ao centro; olhos castanhos-escuros; sobrancelhas escuras, cheias e bem desenhadas; rosto oval levemente alongado; nariz reto e delicado; lábios médios e bem definidos; brincos pequenos e discretos; expressão serena, com sorriso suave.",
    "fotos": {
     "capa": "neural-rafaela-capa.jpg",
     "hover": ""
@@ -739,14 +1495,358 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "alejandra",
    "codigo": "GM-021",
-   "nome": "Alejandra",
+   "nome": "Alejandra Solís",
    "categoria": "neural",
    "situacao": "Disponível",
+   "idade": [
+    23,
+    25
+   ],
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino",
+    "Ruivo acobreado",
+    "Cabelo longo",
+    "Cabelo ondulado",
+    "Cabelo volumoso",
+    "Ondas largas",
+    "Olhos castanhos",
+    "Reflexos âmbar",
+    "Pele clara",
+    "Sardas",
+    "Sobrancelhas naturais",
+    "Beleza natural",
+    "Editorial",
+    "Beauty",
+    "Lifestyle",
+    "Moda contemporânea"
+   ],
+   "bio": "Pele clara, com subtom neutro a levemente quente; cabelo ruivo acobreado, longo, muito volumoso, com ondas largas e textura natural; olhos castanhos, com reflexos âmbar; sobrancelhas castanho-avermelhadas, cheias e naturais; rosto oval, levemente alongado; nariz delicado e reto; lábios médios e bem definidos; sardas numerosas e visíveis no nariz, bochechas e testa; expressão serena, com leve sorriso.",
+   "fotos": {
+    "capa": "neural-alejandra-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-alejandra-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ],
+   "ativo": true
+  },
+  {
+   "id": "ricardo",
+   "codigo": "GM-035",
+   "nome": "Ricardo",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-ricardo-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-ricardo-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "pedro",
+   "codigo": "GM-036",
+   "nome": "Pedro",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-pedro-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-pedro-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "matheus",
+   "codigo": "GM-037",
+   "nome": "Matheus",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-matheus-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-matheus-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "liam",
+   "codigo": "GM-038",
+   "nome": "Liam",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-liam-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-liam-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "vicente",
+   "codigo": "GM-039",
+   "nome": "Vicente",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-vicente-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-vicente-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "otto",
+   "codigo": "GM-040",
+   "nome": "Otto",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-otto-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-otto-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "jamal",
+   "codigo": "GM-041",
+   "nome": "Jamal",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-jamal-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-jamal-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "daniel",
+   "codigo": "GM-042",
+   "nome": "Daniel",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-daniel-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-daniel-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "bianca",
+   "codigo": "GM-043",
+   "nome": "Bianca",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
    "idade": null,
    "aparencia": "",
    "altura": "",
@@ -759,12 +1859,336 @@
    ],
    "bio": "",
    "fotos": {
-    "capa": "neural-alejandra-capa.jpg",
+    "capa": "neural-bianca-capa.jpg",
     "hover": ""
    },
    "portfolio": [
     {
-     "src": "neural-alejandra-capa.jpg",
+     "src": "neural-bianca-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "leticia",
+   "codigo": "GM-044",
+   "nome": "Letícia",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-leticia-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-leticia-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "rita",
+   "codigo": "GM-045",
+   "nome": "Rita",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-rita-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-rita-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "luana",
+   "codigo": "GM-046",
+   "nome": "Luana",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-luana-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-luana-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "alyssa",
+   "codigo": "GM-047",
+   "nome": "Alyssa",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-alyssa-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-alyssa-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "thabata",
+   "codigo": "GM-048",
+   "nome": "Thabata",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-thabata-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-thabata-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "raissa",
+   "codigo": "GM-049",
+   "nome": "Raíssa",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-raissa-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-raissa-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "yasmin",
+   "codigo": "GM-050",
+   "nome": "Yasmin",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-yasmin-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-yasmin-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "laisa",
+   "codigo": "GM-051",
+   "nome": "Laisa",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-laisa-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-laisa-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "livia",
+   "codigo": "GM-052",
+   "nome": "Lívia",
+   "categoria": "neural",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "neural-livia-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "neural-livia-capa.jpg",
      "tipo": "retrato"
     }
    ],
@@ -782,7 +2206,10 @@
    "nome": "Santino Alvarez",
    "categoria": "offmodel",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    22,
+    24
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -790,9 +2217,27 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Masculino"
+    "Masculino",
+    "Cabelo castanho-escuro",
+    "Cabelo curto",
+    "Topo texturizado",
+    "Franja curta",
+    "Degradê",
+    "Olhos castanhos",
+    "Sobrancelhas espessas",
+    "Sobrancelha com corte",
+    "Maxilar definido",
+    "Tatuagem no pescoço",
+    "Tatuagem no peito",
+    "Pele clara a morena clara",
+    "Subtom quente",
+    "Moda masculina",
+    "Streetwear",
+    "Urbano",
+    "Editorial",
+    "Alternativo"
    ],
-   "bio": "",
+   "bio": "Pele clara a morena clara, de subtom quente; cabelo castanho-escuro, curto, com topo texturizado e franja curta irregular, laterais em degradê; olhos castanhos; sobrancelhas muito escuras, espessas e marcadas, com pequeno corte em uma delas; rosto oval levemente angular; maxilar definido; nariz reto; lábios médios e bem delineados; tatuagens pretas visíveis nas laterais do pescoço e na parte superior do peito; expressão neutra e olhar direto.",
    "fotos": {
     "capa": "offmodel-santino-alvarez-capa.jpg",
     "hover": ""
@@ -809,15 +2254,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "oumar",
    "codigo": "GM-023",
-   "nome": "Oumar",
+   "nome": "Oumar Kamara",
    "categoria": "offmodel",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    20,
+    22
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -825,9 +2274,25 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Masculino"
+    "Masculino",
+    "Pele escura",
+    "Subtom quente",
+    "Cabelo crespo",
+    "Cabelo curto",
+    "Corte arredondado",
+    "Laterais baixas",
+    "Olhos castanho-escuros",
+    "Sobrancelhas cheias",
+    "Maxilar definido",
+    "Sem barba",
+    "Beleza natural",
+    "Moda masculina",
+    "Streetwear",
+    "Esportivo",
+    "Editorial",
+    "Lifestyle"
    ],
-   "bio": "",
+   "bio": "Pele escura, de subtom quente; cabelo preto, curto, crespo e denso, em corte arredondado com laterais mais baixas; olhos castanho-escuros; sobrancelhas escuras, cheias e naturais; rosto oval com contornos suaves; maxilar definido; nariz de base larga; lábios médios a volumosos; sem barba aparente; expressão serena e olhar direto.",
    "fotos": {
     "capa": "offmodel-oumar-capa.jpg",
     "hover": ""
@@ -844,7 +2309,8 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "rui-teixeira",
@@ -852,7 +2318,10 @@
    "nome": "Rui Teixeira",
    "categoria": "offmodel",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    20,
+    22
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -860,9 +2329,24 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Masculino"
+    "Masculino",
+    "Pele clara",
+    "Sardas",
+    "Cabelo ruivo acobreado",
+    "Cabelo crespo",
+    "Cachos pequenos",
+    "Cabelo volumoso",
+    "Corte arredondado",
+    "Olhos castanhos",
+    "Sobrancelhas naturais",
+    "Alargador",
+    "Beleza natural",
+    "Alternativo",
+    "Streetwear",
+    "Editorial",
+    "Lifestyle"
    ],
-   "bio": "",
+   "bio": "Pele clara com sardas visíveis no nariz, bochechas e testa; cabelo ruivo acobreado, muito volumoso, crespo e com cachos pequenos e definidos, em formato arredondado; olhos castanhos; sobrancelhas claras e naturais; rosto oval com traços suaves; nariz de largura média; lábios médios; alargador preto na orelha; expressão tranquila, com leve sorriso.",
    "fotos": {
     "capa": "offmodel-rui-teixeira-capa.jpg",
     "hover": ""
@@ -879,7 +2363,8 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "alvaro-blanco",
@@ -887,7 +2372,10 @@
    "nome": "Álvaro Blanco",
    "categoria": "offmodel",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    20,
+    22
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -895,9 +2383,25 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Masculino"
+    "Masculino",
+    "Albinismo",
+    "Pele muito clara",
+    "Cabelo loiro muito claro",
+    "Cabelo trançado",
+    "Tranças rente ao couro cabeludo",
+    "Sobrancelhas claras",
+    "Olhos azul-acinzentados",
+    "Maxilar definido",
+    "Traços angulares",
+    "Piercing na sobrancelha",
+    "Beleza marcante",
+    "Visual alternativo",
+    "Moda masculina",
+    "Editorial",
+    "Streetwear",
+    "Experimental"
    ],
-   "bio": "",
+   "bio": "Pessoa com albinismo; pele muito clara; cabelo loiro muito claro/platinado, trançado rente ao couro cabeludo em várias linhas direcionadas para trás; sobrancelhas muito claras; olhos azul-acinzentados; rosto oval com maxilar definido e traços angulares suaves; nariz reto; lábios médios; dois piercings pequenos na sobrancelha esquerda; expressão séria e olhar direto.",
    "fotos": {
     "capa": "offmodel-alvaro-blanco-capa.jpg",
     "hover": ""
@@ -914,15 +2418,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "marcus",
    "codigo": "GM-026",
-   "nome": "Marcus",
+   "nome": "Marcus Nascimento",
    "categoria": "offmodel",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    20,
+    22
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -930,9 +2438,24 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Masculino"
+    "Masculino",
+    "Brasileiro",
+    "Cria",
+    "Cabelo azul",
+    "Cabelo raspado",
+    "Olhos castanhos",
+    "Tatuagem facial",
+    "Tatuagem na testa",
+    "Tatuagem no rosto",
+    "Tatuagem no pescoço",
+    "Brincos",
+    "Estética urbana",
+    "Streetwear",
+    "Moda masculina",
+    "Editorial",
+    "Alternativo"
    ],
-   "bio": "",
+   "bio": "Pele morena clara, de subtom quente; cabelo muito curto, raspado, tingido de azul intenso; olhos castanhos; sobrancelhas escuras e marcadas; rosto oval levemente alongado, com maxilar definido; nariz reto; lábios médios; tatuagem escrita na testa, próxima à sobrancelha; pequena tatuagem em forma de cruz na região da bochecha; tatuagens discretas no pescoço; brincos pequenos nas duas orelhas; expressão tranquila e olhar direto.",
    "fotos": {
     "capa": "offmodel-marcus-capa.jpg",
     "hover": ""
@@ -949,15 +2472,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "tomas",
    "codigo": "GM-027",
-   "nome": "Tomas",
+   "nome": "Tomas Oliveira",
    "categoria": "offmodel",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    22,
+    24
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -965,9 +2492,25 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Masculino"
+    "Masculino",
+    "Pele morena escura",
+    "Subtom quente",
+    "Dreadlocks",
+    "Cabelo longo",
+    "Cabelo crespo",
+    "Olhos castanhos",
+    "Piercing no nariz",
+    "Alargador",
+    "Barba curta",
+    "Bigode",
+    "Beleza natural",
+    "Streetwear",
+    "Urbano",
+    "Alternativo",
+    "Editorial",
+    "Lifestyle"
    ],
-   "bio": "",
+   "bio": "Pele morena escura, de subtom quente; cabelo preto, crespo, usado em dreadlocks longos e volumosos, caindo ao redor do rosto e sobre os ombros; olhos castanho-escuros; sobrancelhas escuras e naturais; rosto oval, com maxilar suave; nariz de largura média com pequeno piercing na narina; lábios médios e volumosos; barba e bigode curtos e discretos; alargador preto em uma orelha; expressão tranquila, com leve sorriso.",
    "fotos": {
     "capa": "offmodel-tomas-capa.jpg",
     "hover": ""
@@ -984,15 +2527,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "paula",
    "codigo": "GM-028",
-   "nome": "Paula",
+   "nome": "Paula Azevedo",
    "categoria": "offmodel",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    23,
+    25
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -1000,9 +2547,25 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Feminino"
+    "Feminino",
+    "Cabelo raspado",
+    "Cabelo muito curto",
+    "Cabelo escuro",
+    "Olhos castanhos",
+    "Sobrancelhas espessas",
+    "Mandíbula marcada",
+    "Piercing no septo",
+    "Piercing na narina",
+    "Alargadores",
+    "Piercings",
+    "Visual alternativo",
+    "Beleza não convencional",
+    "Streetwear",
+    "Urbano",
+    "Editorial",
+    "Moda sem gênero"
    ],
-   "bio": "",
+   "bio": "Pele clara a morena clara, de subtom neutro a quente; cabelo castanho muito escuro ou preto, raspado bem curto em corte uniforme; olhos castanhos; sobrancelhas escuras, espessas e retas; rosto oval levemente quadrado, com mandíbula marcada; nariz reto, com piercing no septo e piercing na narina; lábios médios; alargadores pretos nas duas orelhas e pequenos brincos adicionais; expressão séria e olhar direto.",
    "fotos": {
     "capa": "offmodel-paula-capa.jpg",
     "hover": ""
@@ -1019,15 +2582,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "manu",
    "codigo": "GM-029",
-   "nome": "Manu",
+   "nome": "Manu Salles",
    "categoria": "offmodel",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    20,
+    22
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -1035,9 +2602,23 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Feminino"
+    "Feminino",
+    "Cabelo verde",
+    "Cabelo colorido",
+    "Verde sálvia",
+    "Cabelo em camadas",
+    "Shag haircut",
+    "Franja curta",
+    "Olhos claros",
+    "Pele muito clara",
+    "Beleza alternativa",
+    "Estética indie",
+    "Visual experimental",
+    "Editorial",
+    "Moda alternativa",
+    "Beleza não convencional"
    ],
-   "bio": "",
+   "bio": "Pele muito clara, de subtom neutro a rosado; cabelo médio a longo, em camadas desfiadas, com franja curta e irregular, tingido em tom verde sálvia acinzentado, com raiz castanha natural aparente; olhos claros entre azul e cinza; sobrancelhas claras e naturais; rosto oval levemente alongado; traços delicados; nariz reto; lábios médios; leve rubor nas bochechas e pequenas marcas naturais na pele; expressão neutra e olhar direto.",
    "fotos": {
     "capa": "offmodel-manu-capa.jpg",
     "hover": ""
@@ -1054,15 +2635,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "thais",
    "codigo": "GM-030",
-   "nome": "Thais",
+   "nome": "Thaís Santana",
    "categoria": "offmodel",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    20,
+    22
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -1070,9 +2655,22 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Feminino"
+    "Feminino",
+    "Cornrows",
+    "Tranças nagô",
+    "Tranças",
+    "Cabelo castanho-escuro",
+    "Cabelo longo",
+    "Pele morena",
+    "Olhos castanhos",
+    "Beleza natural",
+    "Acessórios dourados",
+    "Editorial",
+    "Moda",
+    "Singularidade",
+    "Estética alternativa"
    ],
-   "bio": "",
+   "bio": "Pele morena clara a média, de subtom quente; cabelo castanho-escuro, longo, dividido em várias tranças nagô (cornrows) alinhadas da linha frontal em direção à parte posterior da cabeça; olhos castanho-escuros; sobrancelhas naturais e definidas; rosto oval; traços equilibrados; nariz delicado; lábios médios e bem definidos; pequenas argolas e brincos dourados; colar fino dourado; expressão serena e olhar direto.",
    "fotos": {
     "capa": "offmodel-thais-capa.jpg",
     "hover": ""
@@ -1089,15 +2687,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "arya",
    "codigo": "GM-031",
-   "nome": "Arya",
+   "nome": "Arya Lin",
    "categoria": "offmodel",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    20,
+    22
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -1105,9 +2707,22 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Feminino"
+    "Feminino",
+    "Cabelo preto",
+    "Mechas rosa",
+    "Cabelo colorido",
+    "Corte shag",
+    "Cabelo repicado",
+    "Franja cortina",
+    "Olhos castanhos",
+    "Pele clara a média",
+    "Beleza alternativa",
+    "Estética indie",
+    "Editorial",
+    "Moda experimental",
+    "Ascendência chinesa"
    ],
-   "bio": "",
+   "bio": "Pele clara a média, de subtom neutro a levemente quente; cabelo preto, médio a longo, em corte shag repicado e volumoso, com franja cortina e mechas frontais rosa-claro; olhos castanhos; sobrancelhas naturais; rosto oval levemente arredondado; traços suaves; nariz delicado; lábios médios; pequenas argolas nas orelhas; expressão amigável e sorriso discreto. Personagem de ascendência chinesa.",
    "fotos": {
     "capa": "offmodel-arya-capa.jpg",
     "hover": ""
@@ -1124,14 +2739,16 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
-   "id": "aurora",
-   "codigo": "GM-032",
-   "nome": "Aurora",
-   "categoria": "raw",
+   "id": "yan",
+   "codigo": "GM-065",
+   "nome": "Yan",
+   "categoria": "offmodel",
    "situacao": "Disponível",
+   "ativo": false,
    "idade": null,
    "aparencia": "",
    "altura": "",
@@ -1140,9 +2757,347 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Feminino"
+    "Masculino"
    ],
    "bio": "",
+   "fotos": {
+    "capa": "offmodel-yan-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "offmodel-yan-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "theo",
+   "codigo": "GM-066",
+   "nome": "Theo",
+   "categoria": "offmodel",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "offmodel-theo-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "offmodel-theo-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "caue",
+   "codigo": "GM-067",
+   "nome": "Cauê",
+   "categoria": "offmodel",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "offmodel-caue-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "offmodel-caue-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "rafael",
+   "codigo": "GM-068",
+   "nome": "Rafael",
+   "categoria": "offmodel",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "offmodel-rafael-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "offmodel-rafael-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "javier",
+   "codigo": "GM-069",
+   "nome": "Javier",
+   "categoria": "offmodel",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "offmodel-javier-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "offmodel-javier-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "nicolas",
+   "codigo": "GM-070",
+   "nome": "Nicolas",
+   "categoria": "offmodel",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "offmodel-nicolas-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "offmodel-nicolas-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "benicio",
+   "codigo": "GM-071",
+   "nome": "Benício",
+   "categoria": "offmodel",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "offmodel-benicio-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "offmodel-benicio-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "tadeu",
+   "codigo": "GM-072",
+   "nome": "Tadeu",
+   "categoria": "offmodel",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "offmodel-tadeu-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "offmodel-tadeu-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "eduardo",
+   "codigo": "GM-073",
+   "nome": "Eduardo",
+   "categoria": "offmodel",
+   "situacao": "Disponível",
+   "ativo": false,
+   "idade": null,
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Masculino"
+   ],
+   "bio": "",
+   "fotos": {
+    "capa": "offmodel-eduardo-capa.jpg",
+    "hover": ""
+   },
+   "portfolio": [
+    {
+     "src": "offmodel-eduardo-capa.jpg",
+     "tipo": "retrato"
+    }
+   ],
+   "aplicacoes": [
+    "E-commerce",
+    "Catálogos",
+    "Campanhas",
+    "Editoriais",
+    "Beleza e acessórios"
+   ]
+  },
+  {
+   "id": "aurora",
+   "codigo": "GM-032",
+   "nome": "Aurora Martins",
+   "categoria": "raw",
+   "situacao": "Disponível",
+   "idade": [
+    21,
+    23
+   ],
+   "aparencia": "",
+   "altura": "",
+   "proporcoes": "",
+   "cabelo": "",
+   "olhos": "",
+   "distintivos": "",
+   "tags": [
+    "Feminino",
+    "Cabelo cacheado",
+    "Cachos naturais",
+    "Cabelo volumoso",
+    "Cabelo escuro",
+    "Franja cacheada",
+    "Olhos castanhos",
+    "Pele quente",
+    "Beleza natural",
+    "Textura natural",
+    "Editorial",
+    "Moda",
+    "Beleza real"
+   ],
+   "bio": "Pele clara a morena clara, de subtom quente; cabelo castanho muito escuro, volumoso, longo e naturalmente cacheado, com franja curta formada por cachos soltos sobre a testa; olhos castanhos; sobrancelhas escuras e naturais; rosto oval levemente arredondado; traços suaves; nariz delicado; lábios médios; leve rubor nas bochechas e pequenas marcas naturais na pele; expressão tranquila e olhar direto.",
    "fotos": {
     "capa": "raw-aurora-capa.jpg",
     "hover": ""
@@ -1159,15 +3114,19 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "liana",
    "codigo": "GM-033",
-   "nome": "Liana",
+   "nome": "Liana Ferreira",
    "categoria": "raw",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    21,
+    23
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -1175,9 +3134,21 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Feminino"
+    "Feminino",
+    "Cabelo crespo",
+    "Black power",
+    "Cabelo loiro",
+    "Loiro mel",
+    "Cachos definidos",
+    "Volume natural",
+    "Pele dourada",
+    "Olhos castanhos",
+    "Piercing septo",
+    "Beleza natural",
+    "Editorial",
+    "Moda"
    ],
-   "bio": "",
+   "bio": "Pele morena clara de subtom dourado; cabelo crespo curto, muito volumoso, em black power arredondado, com cachos pequenos e definidos em tom loiro mel/dourado; olhos castanhos escuros; sobrancelhas claras e discretas; rosto oval; nariz delicado com piercing de argola no septo; lábios médios; maquiagem mínima e expressão serena, com olhar direto.",
    "fotos": {
     "capa": "raw-liana-capa.jpg",
     "hover": ""
@@ -1194,7 +3165,8 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   },
   {
    "id": "saulo-villar",
@@ -1202,7 +3174,10 @@
    "nome": "Saulo Villar",
    "categoria": "raw",
    "situacao": "Disponível",
-   "idade": null,
+   "idade": [
+    45,
+    47
+   ],
    "aparencia": "",
    "altura": "",
    "proporcoes": "",
@@ -1210,9 +3185,20 @@
    "olhos": "",
    "distintivos": "",
    "tags": [
-    "Masculino"
+    "Masculino",
+    "Cabelo grisalho",
+    "Cabelo ondulado",
+    "Barba grisalha",
+    "Barba cheia",
+    "Olhos claros",
+    "Homem maduro",
+    "Linhas de expressão",
+    "Beleza madura",
+    "Aparência natural",
+    "Editorial masculino",
+    "Moda"
    ],
-   "bio": "",
+   "bio": "Pele clara a morena clara, de subtom neutro a quente; cabelo curto a médio, ondulado e volumoso, grisalho com mistura de fios castanhos e prateados; penteado com volume natural e movimento; barba cheia, curta a média, grisalha com áreas brancas; olhos claros, entre verde e avelã; sobrancelhas espessas e escuras com fios grisalhos; rosto oval levemente quadrado; linhas de expressão visíveis na testa e ao redor dos olhos; expressão serena e confiante.",
    "fotos": {
     "capa": "raw-saulo-villar-capa.jpg",
     "hover": ""
@@ -1229,7 +3215,8 @@
     "Campanhas",
     "Editoriais",
     "Beleza e acessórios"
-   ]
+   ],
+   "ativo": true
   }
  ],
  "hero": {
@@ -1238,5 +3225,10 @@
   ],
   "total": 5
  },
- "porPagina": 20
+ "porPagina": 20,
+ "filtrosTags": [
+  "Feminino",
+  "Masculino",
+  "Andrógino"
+ ]
 }
