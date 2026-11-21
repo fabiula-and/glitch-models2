@@ -403,6 +403,8 @@ const CP=(await load('campanhas.json',{campanhas:[]})).campanhas||[];
 const C=D.categorias||[],M=(D.modelos||[]).filter(m=>m.ativo!==false);
 /* casting order: shuffled on every visit unless ordemAleatoria is false in modelos.json */
 if(D.ordemAleatoria!==false)for(let i=M.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[M[i],M[j]]=[M[j],M[i]]}
+/* photo URL with a version number, so browsers fetch new photos after they are replaced */
+const IMG=f=>'images/'+esc(f)+(D.versaoFotos?'?v='+encodeURIComponent(D.versaoFotos):'');
 const AGE=m=>{const v=m.idade;if(v==null||v==='')return null;return Array.isArray(v)?[+v[0],+v[v.length-1]]:[+v,+v]};
 const AGET=m=>{const a=AGE(m);return a?(a[0]===a[1]?a[0]:a[0]+'–'+a[1])+' anos':''};
 const pm=$('#pm');let last=null,io=null,tq=false,tcur=null;
@@ -410,8 +412,8 @@ const cat=id=>C.find(c=>c.id===id);
 
 /* photo frame: a = main image, b = optional second image layered on top */
 function ph(m,a,o={}){
-  const b=o.b?`<img class="b" src="images/${esc(o.b)}" alt="" ${o.eager?'':'loading="lazy"'} onerror="this.remove();this.parentNode&&this.parentNode.classList.add('solo')">`:'';
-  return `<div class="ph ${o.cls||''}${o.b?'':' solo'}" data-i="${esc(ini(m.nome))}">${o.top||''}<img class="a" src="images/${esc(a)}" alt="${esc(o.alt||m.nome+', modelo virtual Glitch Models')}" ${o.eager?'':'loading="lazy"'} onerror="this.parentNode.classList.add('miss')">${b}</div>`;
+  const b=o.b?`<img class="b" src="${IMG(o.b)}" alt="" ${o.eager?'':'loading="lazy"'} onerror="this.remove();this.parentNode&&this.parentNode.classList.add('solo')">`:'';
+  return `<div class="ph ${o.cls||''}${o.b?'':' solo'}" data-i="${esc(ini(m.nome))}">${o.top||''}<img class="a" src="${IMG(a)}" alt="${esc(o.alt||m.nome+', modelo virtual Glitch Models')}" ${o.eager?'':'loading="lazy"'} onerror="this.parentNode.classList.add('miss')">${b}</div>`;
 }
 
 /* hero: fixed models always appear (first one in the centre), the rest are drawn at random on every visit */
@@ -556,7 +558,7 @@ pm.addEventListener('click',e=>{
   if(e.target===pm||e.target.closest('#px')){close();return}
   const g=e.target.closest('[data-go]');if(g){go(g.dataset.go);return}
   const t=e.target.closest('[data-pt]');if(t){pm.querySelectorAll('[data-pt]').forEach(x=>x.classList.toggle('on',x===t));$('#pgrid').innerHTML=portfolio(M[pm.dataset.i],t.dataset.pt);return}
-  const f=e.target.closest('figure[data-src]');if(f&&!f.querySelector('.miss')){const lb=$('#lb');lb.querySelector('img').src='images/'+f.dataset.src;lb.hidden=false}
+  const f=e.target.closest('figure[data-src]');if(f&&!f.querySelector('.miss')){const lb=$('#lb');lb.querySelector('img').src=IMG(f.dataset.src);lb.hidden=false}
 });
 $('#lb').addEventListener('click',()=>{$('#lb').hidden=true});
 document.addEventListener('keydown',e=>{

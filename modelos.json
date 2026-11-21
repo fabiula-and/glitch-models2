@@ -14,7 +14,8 @@
   "ativo: true mostra o modelo no site; false deixa o cadastro reservado e escondido (use enquanto não houver foto).",
   "bio: texto de características visuais que aparece no perfil e entra na busca.",
   "filtrosTags: tags que aparecem como botões de filtro no catálogo. As demais tags aparecem no perfil e funcionam na busca.",
-  "ordemAleatoria: true embaralha o casting a cada visita; false mostra na ordem dos códigos."
+  "ordemAleatoria: true embaralha o casting a cada visita; false mostra na ordem dos códigos.",
+  "versaoFotos: troque este texto (por exemplo, pela data do dia) sempre que substituir fotos com o mesmo nome. Assim todos os navegadores baixam as fotos novas na hora."
  ],
  "categorias": [
   {
@@ -3232,5 +3233,6 @@
   "Masculino",
   "Andrógino"
  ],
- "ordemAleatoria": true
+ "ordemAleatoria": true,
+ "versaoFotos": "2026-11-21b"
 }
