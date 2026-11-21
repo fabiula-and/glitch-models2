@@ -13,7 +13,8 @@
   "idade: faixa de idade visual, ex.: [23, 26] aparece como '23–26 anos'. Use null para não mostrar.",
   "ativo: true mostra o modelo no site; false deixa o cadastro reservado e escondido (use enquanto não houver foto).",
   "bio: texto de características visuais que aparece no perfil e entra na busca.",
-  "filtrosTags: tags que aparecem como botões de filtro no catálogo. As demais tags aparecem no perfil e funcionam na busca."
+  "filtrosTags: tags que aparecem como botões de filtro no catálogo. As demais tags aparecem no perfil e funcionam na busca.",
+  "ordemAleatoria: true embaralha o casting a cada visita; false mostra na ordem dos códigos."
  ],
  "categorias": [
   {
@@ -3230,5 +3231,6 @@
   "Feminino",
   "Masculino",
   "Andrógino"
- ]
+ ],
+ "ordemAleatoria": true
 }

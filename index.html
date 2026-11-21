@@ -401,6 +401,8 @@ async function load(f,fb){try{const r=await fetch(f,{cache:'no-cache'});if(!r.ok
 const D=await load('modelos.json',{categorias:[],modelos:[]});
 const CP=(await load('campanhas.json',{campanhas:[]})).campanhas||[];
 const C=D.categorias||[],M=(D.modelos||[]).filter(m=>m.ativo!==false);
+/* casting order: shuffled on every visit unless ordemAleatoria is false in modelos.json */
+if(D.ordemAleatoria!==false)for(let i=M.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[M[i],M[j]]=[M[j],M[i]]}
 const AGE=m=>{const v=m.idade;if(v==null||v==='')return null;return Array.isArray(v)?[+v[0],+v[v.length-1]]:[+v,+v]};
 const AGET=m=>{const a=AGE(m);return a?(a[0]===a[1]?a[0]:a[0]+'–'+a[1])+' anos':''};
 const pm=$('#pm');let last=null,io=null,tq=false,tcur=null;
