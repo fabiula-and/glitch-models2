@@ -50,8 +50,8 @@
    "categoria": "neo-muse",
    "situacao": "Disponível",
    "idade": [
-    28,
-    30
+    23,
+    25
    ],
    "aparencia": "",
    "altura": "",
@@ -447,8 +447,8 @@
    "categoria": "neo-muse",
    "situacao": "Disponível",
    "idade": [
-    26,
-    28
+    22,
+    24
    ],
    "aparencia": "",
    "altura": "",
@@ -1314,7 +1314,7 @@
     "Editorial",
     "Comercial"
    ],
-   "bio": "Pele morena clara a média, de subtom quente; cabelo preto ou castanho muito escuro, longo, abundante, ondulado a cacheado solto, com risca lateral; olhos claros, entre cinza e azul acinzentado; sobrancelhas escuras, cheias e definidas; rosto oval, com traços harmoniosos; nariz de linhas suaves; lábios médios e bem definidos; maquiagem leve e polida; expressão serena, com leve sorriso.",
+   "bio": "Pele morena clara a média, de subtom quente; cabelo preto ou castanho muito escuro, longo, abundante, ondulado a cacheado solto, com risca lateral; olhos castanhos; sobrancelhas escuras, cheias e definidas; rosto oval, com traços harmoniosos; nariz de linhas suaves; lábios médios e bem definidos; maquiagem leve e polida; expressão serena, com leve sorriso.",
    "fotos": {
     "capa": "neural-mariana-alves-capa.jpg",
     "hover": ""
